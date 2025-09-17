@@ -32,6 +32,7 @@ theme:
   features:
     - navigation.tabs # 顶部导航标签
     - navigation.sections # 左侧导航分组
+    - navigation.indexes # 使分组首页可点击
     - navigation.expand # 左侧导航自动展开
     - navigation.top # 返回顶部按钮
     - search.suggest # 搜索建议
@@ -76,8 +77,12 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - 工具与资源:
-    - 总览: tools/index.md
+    - tools/index.md
     - 模拟器使用方法: tools/simulators.md
     - lm_eval_harness 使用方法: tools/lm_eval_harness.md
   - 教程:
     - 体系结构顶会: tutorials/arch_conferences.md
+    - 编辑页面: tutorials/editing_pages.md
+    - Git 使用: tutorials/git_usage.md
+    - Markdown 使用: tutorials/markdown_guide.md
+    - Overleaf 使用: tutorials/overleaf_guide.md
