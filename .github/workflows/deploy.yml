@@ -1,0 +1,28 @@
+name: Deploy MQ-Group Hands-On Site
+
+on:
+  push:
+    branches:
+      - main # 当代码推送到 main 分支时触发
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs mkdocs-material mkdocs-git-revision-date-localized-plugin
+
+      - name: Deploy
+        run: mkdocs gh-deploy --force
