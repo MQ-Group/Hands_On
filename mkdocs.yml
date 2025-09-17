@@ -48,6 +48,7 @@ plugins:
   - git-revision-date-localized:
       type: date
       locale: zh
+      fallback_to_build_date: true
 
 # Markdown 扩展配置 (开启各种强大功能)
 markdown_extensions:
