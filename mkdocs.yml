@@ -72,3 +72,12 @@ markdown_extensions:
   - pymdownx.emoji: # 支持 emoji
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - 首页: index.md
+  - 工具与资源:
+    - 总览: tools/index.md
+    - 模拟器使用方法: tools/simulators.md
+    - lm_eval_harness 使用方法: tools/lm_eval_harness.md
+  - 教程:
+    - 体系结构顶会: tutorials/arch_conferences.md

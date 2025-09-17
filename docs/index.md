@@ -1,13 +1,17 @@
-# 欢迎来到 MQ-Group Hands-On 平台
 
-这是一个集教程、工具和研究分享于一体的内部知识库。
 
-## 我们的目标
+For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-- **知识沉淀**：记录和分享实用的技术教程和操作指南。
-- **效率提升**：提供常用工具的快速索引和使用说明。
-- **学术前沿**：跟进顶会研究，分享前沿动态。
+## Commands
 
----
+* `mkdocs new [dir-name]` - Create a new project.
+* `mkdocs serve` - Start the live-reloading docs server.
+* `mkdocs build` - Build the documentation site.
+* `mkdocs -h` - Print help message and exit.
 
-请通过顶部的导航栏开始探索！
+## Project layout
+
+    mkdocs.yml    # The configuration file.
+    docs/
+        index.md  # The documentation homepage.
+        ...       # Other markdown pages, images and other files.
