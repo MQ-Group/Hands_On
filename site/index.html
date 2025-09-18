@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#commands" class="md-skip">
+        <a href="#mq-group-hands-on" class="md-skip">
           跳转至
         </a>
       
@@ -338,6 +338,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -370,6 +372,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -378,18 +382,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      快速入口
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      使用说明
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      最新更新
     </span>
   </a>
   
@@ -716,6 +729,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -724,18 +739,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      快速入口
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      使用说明
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      最新更新
     </span>
   </a>
   
@@ -760,22 +784,38 @@
   
 
 
-  <h1>首页</h1>
-
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="mq-group-hands-on">MQ-Group Hands-On</h1>
+<p>欢迎来到课题组的实践与资料站。本网站收录体系结构/系统、AI 工程、写作工具等常用指南与最佳实践。</p>
+<h2 id="_1">快速入口</h2>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>工具与资源：</li>
+<li><a href="tools/simulators/">模拟器使用方法</a></li>
+<li><a href="tools/lm_eval_harness/">lm_eval_harness 使用方法</a></li>
+<li><a href="tools/">工具总览</a></li>
+<li>教程：</li>
+<li><a href="tutorials/editing_pages/">编辑页面指南</a></li>
+<li><a href="tutorials/git_usage/">Git 使用规范与速查</a></li>
+<li><a href="tutorials/markdown_guide/">Markdown 使用速查</a></li>
+<li><a href="tutorials/overleaf_guide/">Overleaf 使用速查</a></li>
+<li><a href="tutorials/arch_conferences/">体系结构顶会导航</a></li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<div class="highlight"><pre><span></span><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre></div>
+<h2 id="_2">使用说明</h2>
+<ul>
+<li>左侧为导航目录，支持搜索与键盘导航。</li>
+<li>页面右上角可“在 GitHub 上编辑”，欢迎改进与补充。</li>
+<li>首次贡献可先阅读：<a href="tutorials/editing_pages/">编辑页面指南</a> 与 <a href="tutorials/git_usage/">Git 使用规范</a>。</li>
+</ul>
+<h2 id="_3">最新更新</h2>
+<ul>
+<li>新增：Ramulator2 / Olive 模拟器使用方法、<code>lm_eval_harness</code> 评测指南</li>
+<li>新增：编辑页面、Git 规范、Markdown、Overleaf 教程</li>
+<li>修复：Tools 导航显示问题，支持分组首页点击</li>
+</ul>
+<hr />
+<p>如需本地预览：
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs-git-revision-date-localized-plugin
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mkdocs<span class="w"> </span>serve
+</span></code></pre></div></p>
 
 
 
