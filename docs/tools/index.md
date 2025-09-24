@@ -18,10 +18,15 @@
 
     这也是为什么 Evaluation 部分的性能数据绝大多数以**柱状图**形式呈现，只有相对值而缺乏绝对量化数据。即使与 CPU/GPU 对比时，也通常不考虑这些通用平台上可用的优化手段，数据大概率仅供趋势参考。
 
-    **核心建议：** 重点在于自己的方法**逻辑清晰、言之有理、与设计高度契合**。
+    **核心：** 重点在于自己的方法**逻辑清晰、言之有理、与设计高度契合**。
 
       **simulator配置：**
         python实现的simulator一般比较简洁，依赖也少。但C++尤其是早期的一些simulator，配置复杂，最好踩过一次坑后使用docker打包，供自己或别人使用。
+
+    **帮助快速上手github项目的AI工具：deepwiki**
+    - 使用仅需将项目链接的github换成deepwiki
+    - 之后可以快速了解项目的架构，然后ask anything，帮助提高看源码效率
+    ![deepsiki](./images/deepwiki.png)
 
    - Simulator
      - Simulator 原理
