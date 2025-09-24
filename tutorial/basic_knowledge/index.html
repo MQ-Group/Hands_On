@@ -1,0 +1,971 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="教程、工具与研究分享">
+      
+      
+        <meta name="author" content="MQ Group">
+      
+      
+        <link rel="canonical" href="https://MQ-Group.github.io/Hands_On/tutorial/basic_knowledge/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>第 1 部分：基础知识 - MQ-Group Hands-On</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MQ-Group Hands-On" class="md-header__button md-logo" aria-label="MQ-Group Hands-On" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MQ-Group Hands-On
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 1 部分：基础知识
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MQ-Group/Hands_On" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MQ-Group/Hands_On
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  工具与资源
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorials/arch_conferences/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  教程
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MQ-Group Hands-On" class="md-nav__button md-logo" aria-label="MQ-Group Hands-On" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    MQ-Group Hands-On
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MQ-Group/Hands_On" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MQ-Group/Hands_On
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tools/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    工具与资源
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            工具与资源
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/simulators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    模拟器使用方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/lm_eval_harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    lm_eval_harness 使用方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    教程
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            教程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/arch_conferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    体系结构顶会
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editing_pages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编辑页面
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/git_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git 使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/markdown_guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Markdown 使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      硬件电路设计的基础概念 | 集成电路基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      我们实验室通常进行算法硬件加速的一般步骤
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向硬件实现的优化方法简单举例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="面向硬件实现的优化方法简单举例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithmic Level优化举例：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecturalmicro-architectural-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architectural/Micro-Architectural Level优化举例：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuits-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuits Level优化举例:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化总结：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      编程语言
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      深度学习开源平台简介
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="1">第 1 部分：基础知识</h1>
+<h2 id="_1">硬件电路设计的基础概念 | 集成电路基本概念</h2>
+<p>在我们实验室的主要工作是数字设计，也即将某些算法映射成专用的数字电路来进行加速优化。通过模拟电路进行算法加速暂时不属于我们实验室的主要工作。</p>
+<p>简单说一下关于模拟电路进行算法加速的优点与缺陷：</p>
+<ul>
+<li><strong>优点：</strong> </li>
+<li>计算功耗低 </li>
+<li>
+<p>占用硬件资源（晶体管数）和面积小</p>
+</li>
+<li>
+<p><strong>缺陷：</strong> </p>
+</li>
+<li>大部分信号处理系统都是数字的。即使用模拟电路进行算法加速，最终将模拟信号转换为数字信号需要ADC，然而ADC面积大功耗高。</li>
+<li>另外，模拟电路对噪声的鲁棒性比较差，会有失真，只适合一些对噪声不敏感的算法</li>
+</ul>
+<h2 id="_2">我们实验室通常进行算法硬件加速的一般步骤</h2>
+<ol>
+<li>
+<p><strong>算法的软件实现、分析算法性能，找出算法的瓶颈。</strong></p>
+</li>
+<li>
+<p><strong>对算法的瓶颈部分（比如CNN中的卷积计算）的计算特点等进行面向硬件实现的优化</strong>，优化的方向主要是：</p>
+</li>
+<li>高速</li>
+<li>低功耗  </li>
+<li>小面积</li>
+</ol>
+<p>确定优化目标，比如想要达到多少吞吐率之类的。</p>
+<ol>
+<li>
+<p><strong>根据优化后的算法设计和优化硬件架构（Hardware Architecture, 包括数据通路、数据流和控制）。</strong></p>
+</li>
+<li>
+<p><strong>两个术语：</strong> Architecture、Micro-Architecture。一般的设计都从这两个方面进行设计。前者是一个比较大的范畴，比如这个专用硬件需要有哪些模块，每个模块之间怎么交换数据。后者是对前者的精细化实现，比如某个模块中的加法器是使用Carry-Ripple 加法器还是Carry-Look-ahead加法器。另一个例子就是Intel的CPU和AMD的CPU都用的x86的指令集，因为他们的Instruction Set Architecture是相同的，但是这些指令集具体如何实现(Implementation，比如某种指令花费多少个时钟周期)，各家就不同了。</p>
+</li>
+<li>
+<p><strong>算法数据的量化：</strong> 一般算法在计算机上都是浮点数表示，每个浮点数32bit，很多算法的精度需求并不需要那么多bit来表示数据，如果一个专用硬件还用32bit就会太亏了。另外，浮点计算单元也很复杂，所以算法的硬件实现时我们尽量使用比较小的位宽(data width)的定点计算单元。</p>
+</li>
+<li>
+<p>为了达到这一目的，需要将a)中的软件实现转换成定点数计算，并研究对算法性能的影响。目标是使用尽可能低的精度而不会有多少性能损失（如分类精度减少0.01%以内）。</p>
+</li>
+<li>
+<p><strong>建立一个该硬件架构的软件模型</strong>（如通过C/Python等模拟该架构的计算流程、量化方式等，至于建模的精度就看需求了，可以是cycle-accurate的也可以只是模拟一下整个模型数据的交互，越精确实现起来越麻烦，但对硬件实现带来的指导就越多），该架构的软件模型需要在本质上和a)中算的的确是同一个东西。这个软件模型就会被当作验证你的硬件架构实现正确与否的参照。硬件架构最终的实现必须与该软件模型完全相同。</p>
+</li>
+<li>
+<p>另外，这个硬件架构的软件模型也尽量可以写成参数化的。比如并行度是一个参数N，那么在真正硬件实现之前就可以用这个软件模型通过改变N进行Design Space Exploration。因为真正在使用硬件描述语言进行实现后要进行更改会比在这个层次进行更改麻烦很多。可以通过在这个层次选择得到一个比较好的N之后再实现，得到更优的效果，或者是如果你做得这个工作目标是想达到什么速度、精度指标，如果能在这个阶段提早知道就事半功倍。</p>
+</li>
+<li>
+<p>当然，如果你对自己的design足够有信心没有任何差错或者只是想实现一个，不在乎是不是最优的，也可以跳过这个e)直接做f)。</p>
+</li>
+<li>
+<p><strong>使用Verilog等硬件描述语言(HDL)对e)中的模型进行RTL级的描述实现、仿真验证。</strong> 这一步骤中实现的东西需要和e)中的输出结果等方面完全相同。另外，要注意的是这一步骤的重点是描述，因为各个模块的连接方式什么的实际上都已经有了，这部分工作主要照着之前设计的架构进行各个模块的例化、连线，而已经不属于设计了。所以在写这部分代码的时候，每一行代码在你心中都要有对应的电路，要保证写出来的代码都是能综合出对应的电路。</p>
+</li>
+<li>
+<p>一般来说在这个步骤中的每个层次的模块都分两步进行描述：</p>
+<ol>
+<li>实现/验证数据通路</li>
+<li>实现/验证该数据通路的控制逻辑（一般是通过实现一个状态机）</li>
+</ol>
+<p>根据经验，两者花费的时间比例基本上是2-8或者3-7。</p>
+</li>
+<li>
+<p><strong>将上述Verilog代码进行综合（Synthesize）实现</strong>，也就是把他们真正映射成你设计的电路的门级网表（gate-level netlist）。再对该门级网表进行功耗分析。</p>
+</li>
+<li>
+<p><strong>阅读综合实现的报告</strong>，比如能达到多少频率、面积有多大、功耗多少等等。看看在b)中设计的指标是否达到。若没有达到，可以考虑：</p>
+</li>
+<li>改变综合选项重新综合</li>
+<li>分析没达到指标的原因并返回c)d)e)f)对该部分再次优化（当然如果是小改动直接改RTL也可以，只要能保证功能没有错误）</li>
+</ol>
+<p>如果达到指标要求了，基本上一个数字集成电路前端设计流程就结束了。我们实验室大部分工作都到这一步骤就OK。</p>
+<ul>
+<li>
+<p>如果是想进行FPGA实现，那么在这一步也是综合生成netlist和看报告。但后续还可以实际下板子（毕竟不像ASIC要流片成本……），从而得到非常真实的结果。</p>
+</li>
+<li>
+<p><strong>在集成电路或ASIC设计的实际流程中，前端设计完毕后还有后端设计</strong>，比如版图设计（Layout）、布局布线（Place &amp; Route）、后仿真、形式验证、静态时序分析等等。但是那些太费时间了，一般的科研中最多再做个版图、布局布线和基于后端结果的功耗分析就OK了。反正越往后的结果越准确，但是工作量也越大。</p>
+</li>
+</ul>
+<h2 id="_3">面向硬件实现的优化方法简单举例</h2>
+<ul>
+<li><strong>优化目标：</strong> 高速（high speed）、低功耗(low power)、小面积(small area)。</li>
+<li><strong>优化层次：</strong> Algorithmic Level、Architectural –Level、Circuit Level。优化层次越高收益越高。如果你在算法上就比别人优越了33%，别人在架构上怎么优化也不会比你好的。</li>
+<li><strong>指导思想：</strong> 人没有牺牲的话就什么也得不到，为了得到某些东西就必须付出同等的代价。总之，优化就是牺牲某些你并不太care的性能换取你想要的性能（Engineering is tradeoff），永远不要又想马儿跑又想马儿不吃草。</li>
+</ul>
+<h3 id="algorithmic-level">Algorithmic Level优化举例：</h3>
+<ul>
+<li>
+<p><strong>减少面积：</strong> 比如乘法器在硬件上的复杂度是O(n²)，而加法器的复杂度是O(n)，此处n可以认为是数据位宽，也即一个乘法器的面积可能达到一个加法器的数十倍。那么，通过一些算法变换减少乘法数目就可以显著减少面积。再比如某些数据并不需要存在芯片中，如果可以动态生成，那么就可以减少可观的面积。设计能够动态生成这些数据的算法。</p>
+</li>
+<li>
+<p><strong>高速：</strong> 一个硬件电路的计算速度主要被工作频率、计算并行度所制约。</p>
+</li>
+<li>工作频率有个上限，也即电路中组合逻辑的最长延时的倒数。在算法上可以根据观察计算表达式等方法知道如果直接用乘法器、加法器等单元实现他们会有多长的组合逻辑（比如N个加法器和M个乘法器），那么就可以考虑例如改变某些计算顺序、循环展开再优化、用更多加法换取乘法的减少等方法来降低组合逻辑上的延时。这样就可以提高工作频率。</li>
+<li>
+<p>计算并行度一般来说只要不超过整个算法的总计算量，是可以任意增加的。但也要考虑有可能提高了计算并行度之后会降低系统频率。所以提高并行度并非总是可行。而且提高并行度的代价是面积变大，这些都要考虑到。</p>
+</li>
+<li>
+<p><strong>根据算法特性，针对计算量减少的优化</strong></p>
+</li>
+<li>
+<p><strong>低功耗：</strong> 事实上一般高速和低功耗是一对双生子，某些方法可以让电路变得高速（如缩短关键路径来提高频率），那么这些方法一般来说也可以降低功耗。</p>
+</li>
+</ul>
+<h3 id="architecturalmicro-architectural-level">Architectural/Micro-Architectural Level优化举例：</h3>
+<ul>
+<li>不同的数据的访问成本、不同存储器的面积成本是不一样的，不同的存储器访问功耗也不同。比如在Memory Access Power上：DRAM（200）&gt;&gt;SRAM（6）&gt;Register（1）。</li>
+<li>而在面积效率上：Register &gt; SRAM &gt; DRAM。</li>
+<li>所以具体哪种数据存在什么存储器上要读取几次的设计就需要进行一番考虑。</li>
+</ul>
+<h3 id="circuits-level">Circuits Level优化举例:</h3>
+<ul>
+<li>一般就是比如使用新型存储器、新型器件，采用DVFS方式之类的，不太了解不过多介绍。</li>
+</ul>
+<h3 id="_4">优化总结：</h3>
+<ul>
+<li>很多优化都是Application Specific的，要通过多看文章积累。General的优化方法看看Parhi的书就差不多了。</li>
+</ul>
+<h2 id="_5">编程语言</h2>
+<p>在我们实验室主要需要做的工作是利用软件仿真算法，并在算法的基础上进行硬件的优化和实现。那么在这个过程中，不可避免的需要利用编程语言来实现软件/硬件上的功能，一般需要用的语言如下所列：</p>
+<ul>
+<li><strong>C/C++：</strong> C语言应该说是基础中的基础，几乎所有的深度学习开源平台都是用C++来实现。</li>
+<li><strong>Python：</strong> 几乎所有的开源框架上层都是用python封装起来。</li>
+<li><strong>Verilog：</strong> 硬件设计过程中也需要用Verilog来实现你设计的架构。切记不可用软件的思维来写verilog。</li>
+<li><strong>Matlab：</strong> matlab也非常的易用，大致和python差不多容易用。</li>
+<li><strong>CUDA：</strong> 现在我们用的nvidia的GPU都是用cuda进行编写。</li>
+</ul>
+<h2 id="_6">深度学习开源平台简介</h2>
+<p>在深度学习方向。大家不要把系统/算法从头搭起，目前的众多开源框架已经完全可以满足我们的需求。下面列的几个实验室的基本都用人用，大概的介绍如下：</p>
+<ul>
+<li><strong>Caffe：</strong> Caffe 有非常好的特性，但也有一些小缺点。</li>
+<li><strong>Tensorflow：</strong> tensorflow是谷歌的产品，文档相当相当的丰富。</li>
+<li><strong>Theano：</strong> Theano 是最老牌和最稳定的库之一。</li>
+<li><strong>Torch/Pytorch：</strong> 这也是一个很著名的库。其最大的优势是，安装和使用起来实在是太方便了。</li>
+</ul>
+<hr />
+<p><em>这部分内容为后续的硬件设计和优化奠定了理论基础。建议结合实际项目进行深入学习。</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 04:44:50 UTC">2025年9月24日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy", "content.tabs.link", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
