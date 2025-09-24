@@ -1179,38 +1179,34 @@
 <p>SCALE-Sim v3是专门针对脉动阵列架构的CNN加速器仿真器，支持多种数据流、稀疏性、多核仿真等高级功能。</p>
 <h2 id="_2">运行环境</h2>
 <ul>
-<li><strong>位置</strong>: <code>/data5/wangmeiqi/simulator/scale-sim-v3/</code></li>
 <li><strong>Python环境</strong>: base conda环境</li>
 <li><strong>依赖</strong>: numpy, pandas, matplotlib等</li>
 </ul>
 <h2 id="_3">详细运行步骤</h2>
 <h3 id="1">步骤1: 环境准备和安装</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/data5/wangmeiqi/simulator/scale-sim-v3
-</span></code></pre></div>
 <p><strong>项目结构</strong>：
-<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scale-sim-v3/
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── scalesim/                # 核心仿真代码
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── scale.py            # 主仿真器入口
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── compute/            # 计算核心
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── memory/             # 内存建模
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   └── topology_utils/     # 拓扑解析
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── configs/                # 配置文件
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── scale.cfg          # 标准配置
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   ├── eyeriss.cfg        # Eyeriss配置
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   └── sparsity.cfg       # 稀疏性配置
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>├── topologies/            # 网络拓扑
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   ├── CSV/               # CSV格式拓扑
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   ├── conv_nets/         # 卷积网络
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│   └── transformer/       # Transformer模型
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>├── requirements.txt       # Python依赖
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>└── setup.py              # 安装脚本
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scale-sim-v3/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── scalesim/                # 核心仿真代码
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── scale.py            # 主仿真器入口
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── compute/            # 计算核心
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── memory/             # 内存建模
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   └── topology_utils/     # 拓扑解析
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── configs/                # 配置文件
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── scale.cfg          # 标准配置
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── eyeriss.cfg        # Eyeriss配置
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── sparsity.cfg       # 稀疏性配置
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├── topologies/            # 网络拓扑
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   ├── CSV/               # CSV格式拓扑
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── conv_nets/         # 卷积网络
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   └── transformer/       # Transformer模型
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├── requirements.txt       # Python依赖
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>└── setup.py              # 安装脚本
 </span></code></pre></div></p>
-<p><strong>安装过程</strong>：
-<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 安装依赖</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 安装SCALE-Sim（开发模式）</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<p><strong>安装依赖</strong>：
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 安装依赖</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># 安装SCALE-Sim（开发模式）</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span></code></pre></div></p>
 <p><strong>依赖包</strong>：
 - numpy: 数值计算
@@ -1220,44 +1216,44 @@
 - tqdm: 进度条</p>
 <h3 id="2">步骤2: 配置文件详解</h3>
 <p>分析标准配置文件 <code>configs/scale.cfg</code>：</p>
-<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[general]</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">run_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">scale_example_run_32x32_ws</span><span class="w">    </span><span class="c1"># 运行名称</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">[architecture_presets]</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">ArrayHeight</span><span class="o">:</span><span class="w">    </span><span class="s">32</span><span class="w">          </span><span class="c1"># PE阵列高度</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="na">ArrayWidth</span><span class="o">:</span><span class="w">     </span><span class="s">32</span><span class="w">          </span><span class="c1"># PE阵列宽度  </span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="na">IfmapSramSzkB</span><span class="o">:</span><span class="w">   </span><span class="s">64</span><span class="w">        </span><span class="c1"># 输入特征图SRAM大小(KB)</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="na">FilterSramSzkB</span><span class="o">:</span><span class="w">  </span><span class="s">64</span><span class="w">        </span><span class="c1"># 权重SRAM大小(KB)</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="na">OfmapSramSzkB</span><span class="o">:</span><span class="w">   </span><span class="s">64</span><span class="w">        </span><span class="c1"># 输出特征图SRAM大小(KB)</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="na">IfmapOffset</span><span class="o">:</span><span class="w">    </span><span class="s">0</span><span class="w">          </span><span class="c1"># 输入特征图DRAM偏移</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="na">FilterOffset</span><span class="o">:</span><span class="w">   </span><span class="s">10000000</span><span class="w">   </span><span class="c1"># 权重DRAM偏移</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="na">OfmapOffset</span><span class="o">:</span><span class="w">    </span><span class="s">20000000</span><span class="w">   </span><span class="c1"># 输出特征图DRAM偏移</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="na">Bandwidth</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">10</span><span class="w">             </span><span class="c1"># DRAM带宽(GB/s)</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="na">Dataflow</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">ws</span><span class="w">              </span><span class="c1"># 数据流类型(Weight Stationary)</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="na">MemoryBanks</span><span class="o">:</span><span class="w">   </span><span class="s">1</span><span class="w">           </span><span class="c1"># 内存bank数量</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="na">ReadRequestBuffer</span><span class="o">:</span><span class="w"> </span><span class="s">32</span><span class="w">      </span><span class="c1"># 读请求缓冲区大小</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="na">WriteRequestBuffer</span><span class="o">:</span><span class="w"> </span><span class="s">32</span><span class="w">     </span><span class="c1"># 写请求缓冲区大小</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="k">[layout]</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="na">IfmapCustomLayout</span><span class="o">:</span><span class="w"> </span><span class="s">False</span><span class="w">   </span><span class="c1"># 是否使用自定义输入布局</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="na">IfmapSRAMBankBandwidth</span><span class="o">:</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1"># 输入SRAM bank带宽</span>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="na">IfmapSRAMBankNum</span><span class="o">:</span><span class="w"> </span><span class="s">10</span><span class="w">       </span><span class="c1"># 输入SRAM bank数量</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="na">IfmapSRAMBankPort</span><span class="o">:</span><span class="w"> </span><span class="s">2</span><span class="w">       </span><span class="c1"># 每个bank的端口数</span>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="na">FilterCustomLayout</span><span class="o">:</span><span class="w"> </span><span class="s">False</span><span class="w">  </span><span class="c1"># 是否使用自定义权重布局</span>
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="na">FilterSRAMBankBandwidth</span><span class="o">:</span><span class="w"> </span><span class="s">10</span>
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="na">FilterSRAMBankNum</span><span class="o">:</span><span class="w"> </span><span class="s">10</span>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="na">FilterSRAMBankPort</span><span class="o">:</span><span class="w"> </span><span class="s">2</span>
-</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
-</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="k">[sparsity]</span>
-</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="na">SparsitySupport</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">false</span><span class="w">    </span><span class="c1"># 稀疏性支持</span>
-</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="na">SparseRep</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">ellpack_block</span><span class="w">  </span><span class="c1"># 稀疏表示方法</span>
-</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="na">OptimizedMapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">false</span><span class="w">   </span><span class="c1"># 优化映射</span>
-</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="na">BlockSize</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">8</span><span class="w">              </span><span class="c1"># 块大小</span>
-</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="na">RandomNumberGeneratorSeed</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">40</span><span class="w">  </span><span class="c1"># 随机种子</span>
-</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>
-</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="k">[run_presets]</span>
-</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="na">InterfaceBandwidth</span><span class="o">:</span><span class="w"> </span><span class="s">CALC</span><span class="w">   </span><span class="c1"># 接口带宽(自动计算)</span>
-</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="na">UseRamulatorTrace</span><span class="o">:</span><span class="w"> </span><span class="s">False</span><span class="w">   </span><span class="c1"># 是否使用Ramulator trace</span>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[general]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">run_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">scale_example_run_32x32_ws</span><span class="w">    </span><span class="c1"># 运行名称</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">[architecture_presets]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">ArrayHeight</span><span class="o">:</span><span class="w">    </span><span class="s">32</span><span class="w">          </span><span class="c1"># PE阵列高度</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="na">ArrayWidth</span><span class="o">:</span><span class="w">     </span><span class="s">32</span><span class="w">          </span><span class="c1"># PE阵列宽度  </span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="na">IfmapSramSzkB</span><span class="o">:</span><span class="w">   </span><span class="s">64</span><span class="w">        </span><span class="c1"># 输入特征图SRAM大小(KB)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="na">FilterSramSzkB</span><span class="o">:</span><span class="w">  </span><span class="s">64</span><span class="w">        </span><span class="c1"># 权重SRAM大小(KB)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="na">OfmapSramSzkB</span><span class="o">:</span><span class="w">   </span><span class="s">64</span><span class="w">        </span><span class="c1"># 输出特征图SRAM大小(KB)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="na">IfmapOffset</span><span class="o">:</span><span class="w">    </span><span class="s">0</span><span class="w">          </span><span class="c1"># 输入特征图DRAM偏移</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="na">FilterOffset</span><span class="o">:</span><span class="w">   </span><span class="s">10000000</span><span class="w">   </span><span class="c1"># 权重DRAM偏移</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="na">OfmapOffset</span><span class="o">:</span><span class="w">    </span><span class="s">20000000</span><span class="w">   </span><span class="c1"># 输出特征图DRAM偏移</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="na">Bandwidth</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">10</span><span class="w">             </span><span class="c1"># DRAM带宽(GB/s)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="na">Dataflow</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">ws</span><span class="w">              </span><span class="c1"># 数据流类型(Weight Stationary)</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="na">MemoryBanks</span><span class="o">:</span><span class="w">   </span><span class="s">1</span><span class="w">           </span><span class="c1"># 内存bank数量</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="na">ReadRequestBuffer</span><span class="o">:</span><span class="w"> </span><span class="s">32</span><span class="w">      </span><span class="c1"># 读请求缓冲区大小</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="na">WriteRequestBuffer</span><span class="o">:</span><span class="w"> </span><span class="s">32</span><span class="w">     </span><span class="c1"># 写请求缓冲区大小</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="k">[layout]</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="na">IfmapCustomLayout</span><span class="o">:</span><span class="w"> </span><span class="s">False</span><span class="w">   </span><span class="c1"># 是否使用自定义输入布局</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="na">IfmapSRAMBankBandwidth</span><span class="o">:</span><span class="w"> </span><span class="s">10</span><span class="w"> </span><span class="c1"># 输入SRAM bank带宽</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="na">IfmapSRAMBankNum</span><span class="o">:</span><span class="w"> </span><span class="s">10</span><span class="w">       </span><span class="c1"># 输入SRAM bank数量</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="na">IfmapSRAMBankPort</span><span class="o">:</span><span class="w"> </span><span class="s">2</span><span class="w">       </span><span class="c1"># 每个bank的端口数</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="na">FilterCustomLayout</span><span class="o">:</span><span class="w"> </span><span class="s">False</span><span class="w">  </span><span class="c1"># 是否使用自定义权重布局</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="na">FilterSRAMBankBandwidth</span><span class="o">:</span><span class="w"> </span><span class="s">10</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="na">FilterSRAMBankNum</span><span class="o">:</span><span class="w"> </span><span class="s">10</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="na">FilterSRAMBankPort</span><span class="o">:</span><span class="w"> </span><span class="s">2</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="k">[sparsity]</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="na">SparsitySupport</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">false</span><span class="w">    </span><span class="c1"># 稀疏性支持</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="na">SparseRep</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">ellpack_block</span><span class="w">  </span><span class="c1"># 稀疏表示方法</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="na">OptimizedMapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">false</span><span class="w">   </span><span class="c1"># 优化映射</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="na">BlockSize</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">8</span><span class="w">              </span><span class="c1"># 块大小</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="na">RandomNumberGeneratorSeed</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">40</span><span class="w">  </span><span class="c1"># 随机种子</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="k">[run_presets]</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="na">InterfaceBandwidth</span><span class="o">:</span><span class="w"> </span><span class="s">CALC</span><span class="w">   </span><span class="c1"># 接口带宽(自动计算)</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="na">UseRamulatorTrace</span><span class="o">:</span><span class="w"> </span><span class="s">False</span><span class="w">   </span><span class="c1"># 是否使用Ramulator trace</span>
 </span></code></pre></div>
 <p><strong>关键参数分析</strong>：</p>
 <table>
@@ -1293,35 +1289,35 @@
 </table>
 <h3 id="3">步骤3: 网络拓扑文件分析</h3>
 <p>查看MLPERF拓扑文件 <code>topologies/CSV/MLPERF.csv</code>：</p>
-<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Layer name, IFMAP Height, IFMAP Width, Filter Height, Filter Width, Channels, Num Filter, Strides,
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>AlphaGoZero,
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Conv, 19, 19, 3, 3, 17, 256, 1,           # 19×19输入，3×3卷积，17→256通道
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Res_conv1, 19, 19, 3, 3, 256, 256, 1,     # 残差块卷积1
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Res_conv2, 19, 19, 3, 3, 256, 256, 1,     # 残差块卷积2
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>...
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>ResNet50,
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>Conv, 224, 224, 7, 7, 3, 64, 2,           # 首层7×7卷积
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>Conv, 56, 56, 1, 1, 64, 64, 1,            # 1×1卷积
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>Conv, 56, 56, 3, 3, 64, 64, 1,            # 3×3卷积
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>Conv, 56, 56, 1, 1, 64, 256, 1,           # 1×1卷积(通道扩展)
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>...
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>Transformer,
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>GEMM, 512, 512, 1, 1, 512, 2048, 1,       # FFN第一层
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>GEMM, 2048, 512, 1, 1, 2048, 512, 1,      # FFN第二层
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>...
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Layer name, IFMAP Height, IFMAP Width, Filter Height, Filter Width, Channels, Num Filter, Strides,
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>AlphaGoZero,
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Conv, 19, 19, 3, 3, 17, 256, 1,           # 19×19输入，3×3卷积，17→256通道
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Res_conv1, 19, 19, 3, 3, 256, 256, 1,     # 残差块卷积1
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Res_conv2, 19, 19, 3, 3, 256, 256, 1,     # 残差块卷积2
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>...
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>ResNet50,
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>Conv, 224, 224, 7, 7, 3, 64, 2,           # 首层7×7卷积
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>Conv, 56, 56, 1, 1, 64, 64, 1,            # 1×1卷积
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>Conv, 56, 56, 3, 3, 64, 64, 1,            # 3×3卷积
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>Conv, 56, 56, 1, 1, 64, 256, 1,           # 1×1卷积(通道扩展)
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>...
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>Transformer,
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>GEMM, 512, 512, 1, 1, 512, 2048, 1,       # FFN第一层
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>GEMM, 2048, 512, 1, 1, 2048, 512, 1,      # FFN第二层
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>...
 </span></code></pre></div>
 <p><strong>拓扑格式说明</strong>：
 - <strong>卷积层</strong>: (H, W, Kh, Kw, Cin, Cout, Stride)
 - <strong>GEMM层</strong>: 等价矩阵乘法表示
 - <strong>分组</strong>: 按模型分组，便于分析</p>
 <h3 id="4">步骤4: 基本仿真运行</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-c<span class="w"> </span>configs/scale.cfg<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>-p<span class="w"> </span>outputs
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>-c<span class="w"> </span>configs/scale.cfg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span>-p<span class="w"> </span>outputs
 </span></code></pre></div>
 <p><strong>运行过程</strong>：
 1. <strong>配置解析</strong>: 读取cfg文件，初始化硬件参数
@@ -1330,15 +1326,15 @@
 4. <strong>周期仿真</strong>: 逐层计算执行周期
 5. <strong>结果输出</strong>: 生成详细报告</p>
 <p><strong>仿真输出结构</strong>：
-<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>outputs/
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>└── scale_example_run_32x32_ws/
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    ├── COMPUTE_REPORT.csv          # 计算报告
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    ├── BANDWIDTH_REPORT.csv        # 带宽报告
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    ├── DETAILED_ACCESS_REPORT.csv  # 详细访存报告
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    └── traces/                     # 访存trace文件
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        ├── ifmap_sram_read.csv
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        ├── filter_sram_read.csv
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        └── ofmap_sram_write.csv
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>outputs/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>└── scale_example_run_32x32_ws/
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    ├── COMPUTE_REPORT.csv          # 计算报告
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    ├── BANDWIDTH_REPORT.csv        # 带宽报告
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    ├── DETAILED_ACCESS_REPORT.csv  # 详细访存报告
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    └── traces/                     # 访存trace文件
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        ├── ifmap_sram_read.csv
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        ├── filter_sram_read.csv
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        └── ofmap_sram_write.csv
 </span></code></pre></div></p>
 <h3 id="5">步骤5: 结果分析</h3>
 <h4 id="compute_reportcsv">计算报告 (COMPUTE_REPORT.csv)</h4>
@@ -1416,18 +1412,18 @@
 <h3 id="6">步骤6: 不同配置对比测试</h3>
 <h4 id="1_1">测试1: 不同阵列大小</h4>
 <p>创建16×16配置：
-<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># configs/scale_16x16.cfg</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">[architecture_presets]</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">ArrayHeight</span><span class="o">:</span><span class="w">    </span><span class="s">16</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">ArrayWidth</span><span class="o">:</span><span class="w">     </span><span class="s">16</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># 其他参数相同</span>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># configs/scale_16x16.cfg</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">[architecture_presets]</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="na">ArrayHeight</span><span class="o">:</span><span class="w">    </span><span class="s">16</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="na">ArrayWidth</span><span class="o">:</span><span class="w">     </span><span class="s">16</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 其他参数相同</span>
 </span></code></pre></div></p>
 <p>运行对比：
-<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 32×32阵列</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span>-c<span class="w"> </span>configs/scale.cfg<span class="w"> </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span>-p<span class="w"> </span>outputs_32x32
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 16×16阵列  </span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span>-c<span class="w"> </span>configs/scale_16x16.cfg<span class="w"> </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span>-p<span class="w"> </span>outputs_16x16
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 32×32阵列</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span>-c<span class="w"> </span>configs/scale.cfg<span class="w"> </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span>-p<span class="w"> </span>outputs_32x32
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 16×16阵列  </span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span>-c<span class="w"> </span>configs/scale_16x16.cfg<span class="w"> </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span>-p<span class="w"> </span>outputs_16x16
 </span></code></pre></div></p>
 <p><strong>性能对比</strong>：
 | 阵列大小 | 峰值算力 | 平均利用率 | 总周期 |
@@ -1436,10 +1432,10 @@
 | 16×16 | 256 MACs | 92.1% | 8.4M |</p>
 <h4 id="2_1">测试2: 不同数据流</h4>
 <p>测试Output Stationary (OS)：
-<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># configs/scale_os.cfg</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">[architecture_presets]</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="na">Dataflow</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">os</span><span class="w">              </span><span class="c1"># 改为Output Stationary</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 其他参数相同</span>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># configs/scale_os.cfg</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">[architecture_presets]</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="na">Dataflow</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">os</span><span class="w">              </span><span class="c1"># 改为Output Stationary</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 其他参数相同</span>
 </span></code></pre></div></p>
 <p><strong>数据流对比</strong>：
 | 数据流 | 特点 | 适用场景 | 能效 |
@@ -1449,12 +1445,12 @@
 | Input Stationary | 输入固定，适合深度卷积 | 深度可分离卷积 | 中 |</p>
 <h3 id="7">步骤7: 稀疏性支持测试</h3>
 <p>启用稀疏性配置：
-<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># configs/sparsity_test.cfg</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">[sparsity]</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="na">SparsitySupport</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">true</span><span class="w">     </span><span class="c1"># 启用稀疏性</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="na">SparseRep</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">csr</span><span class="w">           </span><span class="c1"># 使用CSR表示</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="na">OptimizedMapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">true</span><span class="w">    </span><span class="c1"># 启用优化映射</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="na">BlockSize</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">4</span><span class="w">             </span><span class="c1"># 4×4块大小</span>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># configs/sparsity_test.cfg</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">[sparsity]</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="na">SparsitySupport</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">true</span><span class="w">     </span><span class="c1"># 启用稀疏性</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="na">SparseRep</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">csr</span><span class="w">           </span><span class="c1"># 使用CSR表示</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="na">OptimizedMapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">true</span><span class="w">    </span><span class="c1"># 启用优化映射</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="na">BlockSize</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">4</span><span class="w">             </span><span class="c1"># 4×4块大小</span>
 </span></code></pre></div></p>
 <p><strong>稀疏性测试结果</strong>：
 | 稀疏度 | 有效算力 | 内存节省 | 总周期 |
@@ -1464,25 +1460,25 @@
 | 90% | 102 MACs | 85% | 0.3M |</p>
 <h2 id="_4">高级功能</h2>
 <h3 id="1_2">1. 多核仿真</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 启用多核功能</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.multi_core<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>-c<span class="w"> </span>configs/multi_core.cfg<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span>-n<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># 4个核心</span>
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 启用多核功能</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.multi_core<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span>-c<span class="w"> </span>configs/multi_core.cfg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span>-n<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># 4个核心</span>
 </span></code></pre></div>
 <h3 id="2-ramulator">2. Ramulator集成</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># configs/ramulator_enabled.cfg</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">[run_presets]</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="na">UseRamulatorTrace</span><span class="o">:</span><span class="w"> </span><span class="s">True</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">RamulatorConfig</span><span class="o">:</span><span class="w"> </span><span class="s">ramulator_ddr4.yaml</span>
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># configs/ramulator_enabled.cfg</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">[run_presets]</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="na">UseRamulatorTrace</span><span class="o">:</span><span class="w"> </span><span class="s">True</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="na">RamulatorConfig</span><span class="o">:</span><span class="w"> </span><span class="s">ramulator_ddr4.yaml</span>
 </span></code></pre></div>
 <h3 id="3-accelergy">3. Accelergy能耗分析</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 启用能耗分析</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span>-c<span class="w"> </span>configs/scale.cfg<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span>--enable_accelergy<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span>--accelergy_config<span class="w"> </span>accelergy.yaml
+<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 启用能耗分析</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>python<span class="w"> </span>-m<span class="w"> </span>scalesim.scale<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>-c<span class="w"> </span>configs/scale.cfg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>-t<span class="w"> </span>topologies/CSV/MLPERF.csv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span>--enable_accelergy<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span>--accelergy_config<span class="w"> </span>accelergy.yaml
 </span></code></pre></div>
 <h2 id="_5">性能调优指南</h2>
 <h3 id="1_3">1. 阵列大小选择</h3>
@@ -1492,31 +1488,31 @@
 - 大模型(Transformer): 64×64或更大</p>
 <h3 id="2_2">2. 存储配置优化</h3>
 <p><strong>SRAM大小配置</strong>：
-<div class="highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 计算最优SRAM大小</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">calc_optimal_sram</span><span class="p">(</span><span class="n">layer_params</span><span class="p">):</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">ifmap_size</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">filter_size</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">ofmap_size</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;OH&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;OW&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="c1"># 考虑数据重用</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="n">optimal_ifmap_sram</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ifmap_size</span><span class="p">,</span> <span class="mi">64</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 64KB上限</span>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="n">optimal_filter_sram</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">filter_size</span><span class="p">,</span> <span class="mi">128</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 128KB上限</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="n">optimal_ofmap_sram</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ofmap_size</span><span class="p">,</span> <span class="mi">32</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span>   <span class="c1"># 32KB上限</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="k">return</span> <span class="n">optimal_ifmap_sram</span><span class="p">,</span> <span class="n">optimal_filter_sram</span><span class="p">,</span> <span class="n">optimal_ofmap_sram</span>
+<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 计算最优SRAM大小</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">calc_optimal_sram</span><span class="p">(</span><span class="n">layer_params</span><span class="p">):</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">ifmap_size</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">filter_size</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">ofmap_size</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;OH&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;OW&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="c1"># 考虑数据重用</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="n">optimal_ifmap_sram</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ifmap_size</span><span class="p">,</span> <span class="mi">64</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 64KB上限</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="n">optimal_filter_sram</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">filter_size</span><span class="p">,</span> <span class="mi">128</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># 128KB上限</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="n">optimal_ofmap_sram</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ofmap_size</span><span class="p">,</span> <span class="mi">32</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span>   <span class="c1"># 32KB上限</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="k">return</span> <span class="n">optimal_ifmap_sram</span><span class="p">,</span> <span class="n">optimal_filter_sram</span><span class="p">,</span> <span class="n">optimal_ofmap_sram</span>
 </span></code></pre></div></p>
 <h3 id="3_1">3. 数据流选择策略</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">select_dataflow</span><span class="p">(</span><span class="n">layer_params</span><span class="p">):</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">K</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;kernel_size&#39;</span><span class="p">]</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">C</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;input_channels&#39;</span><span class="p">]</span> 
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">N</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;output_channels&#39;</span><span class="p">]</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="k">if</span> <span class="n">K</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="k">return</span> <span class="s1">&#39;ws&#39;</span>  <span class="c1"># Weight Stationary for large kernels</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="k">elif</span> <span class="n">C</span> <span class="o">&gt;</span> <span class="n">N</span><span class="p">:</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>        <span class="k">return</span> <span class="s1">&#39;is&#39;</span>  <span class="c1"># Input Stationary for channel reduction</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>        <span class="k">return</span> <span class="s1">&#39;os&#39;</span>  <span class="c1"># Output Stationary for general cases</span>
+<div class="highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">select_dataflow</span><span class="p">(</span><span class="n">layer_params</span><span class="p">):</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">K</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;kernel_size&#39;</span><span class="p">]</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">C</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;input_channels&#39;</span><span class="p">]</span> 
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">N</span> <span class="o">=</span> <span class="n">layer_params</span><span class="p">[</span><span class="s1">&#39;output_channels&#39;</span><span class="p">]</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="k">if</span> <span class="n">K</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>        <span class="k">return</span> <span class="s1">&#39;ws&#39;</span>  <span class="c1"># Weight Stationary for large kernels</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="k">elif</span> <span class="n">C</span> <span class="o">&gt;</span> <span class="n">N</span><span class="p">:</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>        <span class="k">return</span> <span class="s1">&#39;is&#39;</span>  <span class="c1"># Input Stationary for channel reduction</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>        <span class="k">return</span> <span class="s1">&#39;os&#39;</span>  <span class="c1"># Output Stationary for general cases</span>
 </span></code></pre></div>
 <h2 id="_6">验证与基准测试</h2>
 <h3 id="1_4">1. 与实际硬件对比</h3>
@@ -1583,28 +1579,28 @@
 </table>
 <h2 id="_7">扩展开发</h2>
 <h3 id="1_5">1. 自定义数据流</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomDataflow</span><span class="p">(</span><span class="n">Dataflow</span><span class="p">):</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;custom_dataflow&quot;</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_cycles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_params</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">):</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="c1"># 实现自定义数据流的周期计算</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="k">pass</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_params</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">):</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>        <span class="c1"># 实现自定义数据流的能耗计算  </span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="k">pass</span>
+<div class="highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomDataflow</span><span class="p">(</span><span class="n">Dataflow</span><span class="p">):</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;custom_dataflow&quot;</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_cycles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_params</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">):</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="c1"># 实现自定义数据流的周期计算</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>        <span class="k">pass</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_params</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">):</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>        <span class="c1"># 实现自定义数据流的能耗计算  </span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>        <span class="k">pass</span>
 </span></code></pre></div>
 <h3 id="2_4">2. 新架构支持</h3>
-<div class="highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">NewArchitecture</span><span class="p">(</span><span class="n">Architecture</span><span class="p">):</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">special_units</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;special_units&#39;</span><span class="p">]</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_compute_cycles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ops</span><span class="p">):</span>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>        <span class="c1"># 考虑特殊计算单元</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="k">return</span> <span class="n">ops</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pe_count</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">special_units</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">NewArchitecture</span><span class="p">(</span><span class="n">Architecture</span><span class="p">):</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">special_units</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;special_units&#39;</span><span class="p">]</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_compute_cycles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ops</span><span class="p">):</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="c1"># 考虑特殊计算单元</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="k">return</span> <span class="n">ops</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pe_count</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">special_units</span><span class="p">)</span>
 </span></code></pre></div>
 <h2 id="_8">使用建议</h2>
 <h3 id="1_6">1. 快速原型设计</h3>
@@ -1661,7 +1657,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 04:13:57 UTC">2025年9月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 10:55:49 UTC">2025年9月24日</span>
   </span>
 
     
@@ -1734,6 +1730,10 @@
     
     
       <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
