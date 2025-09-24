@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://MQ-Group.github.io/Hands_On/tutorial/model_compression_vlsi/">
       
       
+        <link rel="prev" href="../research_and_writing/">
+      
+      
+        <link rel="next" href="../../tutorials/arch_conferences/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>第 4 部分：神经网络模型压缩与VLSI优化方向介绍 - MQ-Group Hands-On</title>
+        <title>4. 模型压缩与VLSI优化 - MQ-Group Hands-On</title>
       
     
     
@@ -55,6 +59,10 @@
     
     
     
+  
+  <!-- 页面作者统计样式 -->
+  <link rel="stylesheet" href="../../assets/css/page-authors.css">
+
   </head>
   
   
@@ -107,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              第 4 部分：神经网络模型压缩与VLSI优化方向介绍
+              4. 模型压缩与VLSI优化
             
           </span>
         </div>
@@ -259,17 +267,41 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../tutorials/arch_conferences/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
     
   
-  教程
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../collaboration/git_workflow/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  协作指南
 
         </a>
       </li>
@@ -464,56 +496,577 @@
       
   
   
+    
   
   
+  
     
     
       
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
-    教程
+    Tutorial
     
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            教程
+            Tutorial
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. 基础知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. 常用工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../research_and_writing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. 科研与写作
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    4. 模型压缩与VLSI优化
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. 模型压缩与VLSI优化
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nn-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      NN Hardware设计概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NN Hardware设计概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nn-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. NN hardware评价的性能指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 大家都focus在什么地方？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-nn-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 一些典型研究组的NN Hardware的工作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      模型压缩技术详解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型压缩技术详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      量化 (Quantization)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="量化 (Quantization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      量化方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      量化优势
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      剪枝 (Pruning)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="剪枝 (Pruning)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      剪枝类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      剪枝策略
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-distillation" class="md-nav__link">
+    <span class="md-ellipsis">
+      知识蒸馏 (Knowledge Distillation)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="知识蒸馏 (Knowledge Distillation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      蒸馏过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      蒸馏优势
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-rank-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      低秩分解 (Low-rank Decomposition)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="低秩分解 (Low-rank Decomposition)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      分解方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vlsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      VLSI优化技术
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VLSI优化技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据流优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据流优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据重用策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      内存层次优化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      并行计算架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="并行计算架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据并行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      模型并行
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      专用硬件设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专用硬件设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systolic-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      脉动阵列 (Systolic Array)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据流架构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      实际应用案例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实际应用案例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      移动端部署
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      云端部署
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      自动驾驶
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      未来发展趋势
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="未来发展趋势">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      技术趋势
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      应用趋势
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
             
               
                 
@@ -538,28 +1091,61 @@
 
               
             
-              
-                
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
   
   
-    <li class="md-nav__item">
-      <a href="../../tutorials/editing_pages/" class="md-nav__link">
+    
+    
+      
         
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
-    编辑页面
+    协作指南
     
   </span>
   
 
-      </a>
-    </li>
-  
-
-              
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            协作指南
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -568,35 +1154,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorials/git_usage/" class="md-nav__link">
+      <a href="../../collaboration/git_workflow/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Git 使用
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../tutorials/markdown_guide/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Markdown 使用
+    Git 协作流程
     
   </span>
   
@@ -1021,6 +1584,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
 
@@ -1188,6 +1752,8 @@
     
   
   
+    
+  
 
 
   <aside class="md-source-file">
@@ -1197,10 +1763,19 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 04:44:50 UTC">2025年9月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 04:13:57 UTC">2025年9月24日</span>
   </span>
 
     
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 03:55:00 UTC">2025年9月24日</span>
+  </span>
+
     
     
     
@@ -1211,6 +1786,9 @@
 
 
                 
+  <!-- 页面作者统计脚本 -->
+  <script src="../../assets/js/page-authors.js"></script>
+
               </article>
             </div>
           
