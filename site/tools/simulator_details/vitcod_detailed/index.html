@@ -94,7 +94,8 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="MQ-Group Hands-On" class="md-header__button md-logo" aria-label="MQ-Group Hands-On" data-md-component="logo">
       
-  <img src="../../../assets/images/logo.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -327,7 +328,8 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="MQ-Group Hands-On" class="md-nav__button md-logo" aria-label="MQ-Group Hands-On" data-md-component="logo">
       
-  <img src="../../../assets/images/logo.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     MQ-Group Hands-On
@@ -445,7 +447,7 @@
   
   
   <span class="md-ellipsis">
-    模拟器使用方法
+    Simulator分析与使用
     
   </span>
   
@@ -655,12 +657,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/arch_conferences/" class="md-nav__link">
+      <a href="../../../tutorial/arch_conferences/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    体系结构顶会
+    5. 体系结构顶会
     
   </span>
   
@@ -795,7 +797,16 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      运行环境
+      原理简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macs-accelerator-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      粗略评估：MACs / Accelerator Throughput
     </span>
   </a>
   
@@ -803,6 +814,15 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行环境
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       详细运行步骤
     </span>
@@ -853,7 +873,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       性能分析
     </span>
@@ -863,7 +883,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       注意力计算性能
     </span>
@@ -881,7 +901,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       端到端性能
     </span>
@@ -895,7 +915,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       架构特色
     </span>
@@ -937,7 +957,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       使用建议
     </span>
@@ -946,7 +966,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       局限性
     </span>
@@ -977,13 +997,32 @@
 <h1 id="vitcod-vision-transformer">ViTCoD Vision Transformer 加速器详细运行记录</h1>
 <h2 id="_1">概述</h2>
 <p>ViTCoD (Vision Transformer Acceleration via Dedicated Algorithm and Accelerator Co-Design) 是专门针对Vision Transformer的硬件加速器仿真器，发表于HPCA 2023。</p>
-<h2 id="_2">运行环境</h2>
+<h2 id="_2">原理简介</h2>
+<ul>
+<li>算法侧：对注意力图进行极化/重排，形成规则的密集+稀疏分区，便于硬件高效执行；结合轻量编码/解码减少访存量。</li>
+<li>硬件侧：密集与稀疏双引擎，按比例动态分配PE；片上编解码配合存取，降低数据搬运成本。</li>
+</ul>
+<h2 id="macs-accelerator-throughput">粗略评估：MACs / Accelerator Throughput</h2>
+<ul>
+<li>总计算量估算（以单层注意力QK^T和FFN为例）：</li>
+<li>Attention GEMM: MACs_attn ≈ B·H·N·d × d （或按具体实现展开）</li>
+<li>FFN GEMM: MACs_ffn ≈ B·N·d × 4d + B·N·4d × d</li>
+<li>总MACs ≈ Σ(各层MACs)</li>
+<li>加速器吞吐量（峰值）≈ PE_count × ops_per_cycle × freq。</li>
+<li>对定点乘加，ops_per_cycle≈1 或 2（若计mul和add）。</li>
+<li>端到端粗估延迟：T_est ≈ 总MACs / 峰值吞吐量。</li>
+<li>结合ViTCoD的稀疏化：将稀疏比例s引入，有效MACs ≈ (1−s)×密集部分 + 稀疏核映射后实际MACs。</li>
+</ul>
+<blockquote>
+<p>注：此估算忽略访存与调度停顿，上限接近理想峰值，实际以仿真结果校正。</p>
+</blockquote>
+<h2 id="_3">运行环境</h2>
 <ul>
 <li><strong>位置</strong>: <code>/data5/wangmeiqi/simulator/ViTCoD/</code></li>
 <li><strong>Python环境</strong>: base conda环境</li>
 <li><strong>依赖</strong>: numpy, matplotlib等基础科学计算包</li>
 </ul>
-<h2 id="_3">详细运行步骤</h2>
+<h2 id="_4">详细运行步骤</h2>
 <h3 id="1">步骤1: 环境准备</h3>
 <div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/data5/wangmeiqi/simulator/ViTCoD/Hardware/Simulator
 </span></code></pre></div>
@@ -1116,8 +1155,8 @@
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>[2023/06/27 21:16:10] - total cycles: 2043156
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>[2023/06/27 21:16:10] - ******************************
 </span></code></pre></div></p>
-<h2 id="_4">性能分析</h2>
-<h3 id="_5">注意力计算性能</h3>
+<h2 id="_5">性能分析</h2>
+<h3 id="_6">注意力计算性能</h3>
 <ol>
 <li><strong>稀疏度效果</strong>：</li>
 <li>稀疏区域非零元素比例：3.63%</li>
@@ -1152,7 +1191,7 @@
 <li>线性层预加载：23,304 cycles</li>
 <li>FFN层预加载：0 cycles（数据重用）</li>
 </ol>
-<h3 id="_6">端到端性能</h3>
+<h3 id="_7">端到端性能</h3>
 <ul>
 <li><strong>注意力总延迟</strong>：9,492 cycles</li>
 <li><strong>FFN总延迟</strong>：2,043,156 cycles</li>
@@ -1163,7 +1202,7 @@
 1. FFN层是主要的计算瓶颈，占总延迟的99.5%以上
 2. 注意力计算通过稀疏化获得了显著加速
 3. 数据预加载是注意力计算的主要延迟来源</p>
-<h2 id="_7">架构特色</h2>
+<h2 id="_8">架构特色</h2>
 <h3 id="1_1">1. 注意力图极化算法</h3>
 <ul>
 <li>将随机稀疏模式重组为规整的密集+稀疏模式</li>
@@ -1179,13 +1218,13 @@
 <li>压缩Q、K矩阵，减少存储需求</li>
 <li>动态解压缩，平衡计算和存储</li>
 </ul>
-<h2 id="_8">使用建议</h2>
+<h2 id="_9">使用建议</h2>
 <ol>
 <li><strong>稀疏度选择</strong>：95%稀疏度在精度和性能间达到良好平衡</li>
 <li><strong>PE配置</strong>：64x8的PE阵列适合DeiT-Tiny规模</li>
 <li><strong>比例调优</strong>：密集:稀疏 = 2:1的PE分配比例较为合理</li>
 </ol>
-<h2 id="_9">局限性</h2>
+<h2 id="_10">局限性</h2>
 <ol>
 <li>仅支持固定稀疏模式，不适用于动态稀疏</li>
 <li>针对特定ViT架构优化，泛化性有限</li>
@@ -1213,7 +1252,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 04:13:57 UTC">2025年9月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年9月24日 09:00:44 UTC">2025年9月24日</span>
   </span>
 
     

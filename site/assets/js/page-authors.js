@@ -33,10 +33,10 @@ async function createPageAuthorsContainer(fileName) {
             <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
             </svg>
-            <span>页面作者信息</span>
+            <span>页面 Contributor 信息</span>
         </div>
         <div style="text-align: center; padding: 1rem; color: var(--md-default-fg-color--light);">
-            <em>正在加载作者信息...</em>
+            <em>正在加载 Contributor 信息...</em>
         </div>
     `;
     
@@ -56,7 +56,7 @@ async function createPageAuthorsContainer(fileName) {
                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
                 </svg>
-                <span>页面作者信息</span>
+                <span>页面 Contributor 信息</span>
             </div>
             
             <div class="page-authors-meta">
@@ -73,46 +73,32 @@ async function createPageAuthorsContainer(fileName) {
                     </svg>
                     <span>创建时间: ${pageMeta.created}</span>
                 </div>
-                
-                <div class="page-authors-meta-item">
-                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16,4C18.2,4 20,5.8 20,8C20,10.2 18.2,12 16,12C13.8,12 12,10.2 12,8C12,5.8 13.8,4 16,4M16,5.9A2.1,2.1 0 0,0 13.9,8A2.1,2.1 0 0,0 16,10.1A2.1,2.1 0 0,0 18.1,8A2.1,2.1 0 0,0 16,5.9M16,13C18.67,13 24,14.33 24,17V20H8V17C8,14.33 13.33,13 16,13M8.1,20H23.9V17C23.9,15.9 20.9,14.9 16,14.9C11.1,14.9 8.1,15.9 8.1,17V20M12,8C12,10.2 10.2,12 8,12C5.8,12 4,10.2 4,8C4,5.8 5.8,4 8,4C10.2,4 12,5.8 12,8M8,5.9A2.1,2.1 0 0,0 5.9,8A2.1,2.1 0 0,0 8,10.1A2.1,2.1 0 0,0 10.1,8A2.1,2.1 0 0,0 8,5.9M8,13C10.67,13 16,14.33 16,17V20H0V17C0,14.33 5.33,13 8,13M15.9,20H16.1V17C16.1,15.9 13.1,14.9 8,14.9C2.9,14.9 -0.1,15.9 -0.1,17V20H0.1V17C0.1,15.9 3.1,14.9 8,14.9C12.9,14.9 15.9,15.9 15.9,17V20Z"/>
-                    </svg>
-                    <span>作者: ${pageMeta.authors.map(a => a.name).join(', ')}</span>
-                </div>
-                
-                <a href="https://github.com/MQ-Group/Hands_On" class="github-link" target="_blank">
-                    <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.55,6.87 11.7,6.75 12.85,6.75C14,6.75 15.15,6.87 16.2,7.17C18.11,5.88 18.95,6.15 18.95,6.15C19.5,7.5 19.15,8.54 19.05,8.79C19.7,9.5 20.08,10.39 20.08,11.5C20.08,15.32 17.75,16.17 15.53,16.42C15.81,16.67 16.09,17.11 16.18,17.76C16.75,18 17.7,18.45 18.57,16.93C18.57,16.93 19.1,15.97 20.1,15.9C20.1,15.9 21.08,15.88 20.17,16.5C20.17,16.5 19.52,16.81 19.06,17.97C19.06,17.97 18.47,19.91 15.7,19.31C15.7,20.14 15.7,20.77 15.7,21C15.7,21.27 15.86,21.58 16.36,21.5C20.33,20.17 23.2,16.42 23.2,12A10,10 0 0,0 12,2Z"/>
-                    </svg>
-                    <span>GitHub</span>
-                </a>
             </div>
             
             <div class="page-authors-list">
-                <span class="label">Page Authors:</span>
+                <span class="label">Page Contributors:</span>
                 <div class="authors">
                     ${pageMeta.authors.map(author => `
                         <a href="${author.url}" class="page-author-item" target="_blank">
                             <img src="${author.avatar}" alt="${author.name}" class="page-author-avatar">
                             <span class="page-author-name">${author.name}</span>
-                            <span class="page-author-percentage">(${author.percentage}%)</span>
+                            <span class="page-author-percentage">(${author.percentage})</span>
                         </a>
                     `).join('')}
                 </div>
             </div>
         `;
     } catch (error) {
-        console.error('Failed to load page authors:', error);
+        console.error('Failed to load page contributors:', error);
         container.innerHTML = `
             <div class="page-authors-header">
                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
                 </svg>
-                <span>页面作者信息</span>
+                <span>页面 Contributor 信息</span>
             </div>
             <div style="text-align: center; padding: 1rem; color: var(--md-default-fg-color--light);">
-                <em>无法加载作者信息</em>
+                <em>无法加载 Contributor 信息</em>
             </div>
         `;
     }
