@@ -1,7 +1,7 @@
 # Git 协作流程详解
 
-本文档详细介绍了 MQ-Group Hands-On 项目的 Git 协作流程，包括分支管理、代码审查、发布流程等。
-
+本文档详细介绍了包括mkdocs静态网站Hands-On在内的Git协作流程，包括分支管理、代码审查、发布流程等。
+mkdcos与普通git项目的主要区别在于一个独立的gh-pages分支，无需管理自动根据main生成site设置。
 ## 分支策略
 
 ### 主分支
@@ -27,6 +27,10 @@
 - `fix/navigation-display-issue`
 
 ## 详细协作流程
+git的简要原理如下图所示：
+![git_workflow](image/git_flow.png)
+在 master/main 外建立分支，开发功能验证后再合并，一直维持一份正确的版本。
+
 
 ### 1. 环境准备
 
@@ -234,19 +238,7 @@ git add <resolved-files>
 git rebase --continue
 ```
 
-### 3. 代码审查最佳实践
 
-#### 审查者
-- 仔细阅读代码和文档
-- 检查逻辑正确性
-- 验证格式和风格
-- 测试功能完整性
-
-#### 被审查者
-- 及时响应审查意见
-- 解释设计决策
-- 主动修复问题
-- 保持积极态度
 
 ## 常见问题解决
 
@@ -291,12 +283,6 @@ git filter-branch --force --index-filter \
 git push origin --force --all
 ```
 
-## 工具推荐
-
-### Git 客户端
-- **命令行**: Git Bash (Windows), Terminal (macOS/Linux)
-- **图形界面**: GitHub Desktop, SourceTree, GitKraken
-- **IDE 集成**: VS Code, IntelliJ IDEA, Vim
 
 ### 有用命令
 ```bash

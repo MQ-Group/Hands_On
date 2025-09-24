@@ -13,7 +13,6 @@ edit_uri: edit/main/docs/ # 允许用户直接跳转到 GitHub 编辑页面
 theme:
   name: material
   language: zh # 设置语言为中文
-  logo: assets/images/logo.svg # 你的 Logo
   favicon: assets/images/favicon.png # 你的 Favicon
   palette:
     # 配色方案 (可根据喜好在官网调色板选择)
