@@ -4,6 +4,22 @@
 
 ViTCoD (Vision Transformer Acceleration via Dedicated Algorithm and Accelerator Co-Design) 是专门针对Vision Transformer的硬件加速器仿真器，发表于HPCA 2023。
 
+## 原理简介
+- 算法侧：对注意力图进行极化/重排，形成规则的密集+稀疏分区，便于硬件高效执行；结合轻量编码/解码减少访存量。
+- 硬件侧：密集与稀疏双引擎，按比例动态分配PE；片上编解码配合存取，降低数据搬运成本。
+
+## 粗略评估：MACs / Accelerator Throughput
+- 总计算量估算（以单层注意力QK^T和FFN为例）：
+  - Attention GEMM: MACs_attn ≈ B·H·N·d × d （或按具体实现展开）
+  - FFN GEMM: MACs_ffn ≈ B·N·d × 4d + B·N·4d × d
+  - 总MACs ≈ Σ(各层MACs)
+- 加速器吞吐量（峰值）≈ PE_count × ops_per_cycle × freq。
+  - 对定点乘加，ops_per_cycle≈1 或 2（若计mul和add）。
+- 端到端粗估延迟：T_est ≈ 总MACs / 峰值吞吐量。
+- 结合ViTCoD的稀疏化：将稀疏比例s引入，有效MACs ≈ (1−s)×密集部分 + 稀疏核映射后实际MACs。
+
+> 注：此估算忽略访存与调度停顿，上限接近理想峰值，实际以仿真结果校正。
+
 ## 运行环境
 
 - **位置**: `/data5/wangmeiqi/simulator/ViTCoD/`

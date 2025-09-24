@@ -2,9 +2,9 @@
 
 这里可以放入一些工具使用教程或记录，以免遗忘以及方便其他人查看。
 某个领域的tutorial,供大家学习。
-只需编辑docs下的.md文档，图片、数据、脚本等文件放在assets目录下引用插入，更新后使用mkdocs gh-deploy命令会自动推送到网页。
+只需编辑docs下的.md文档，图片、数据、脚本等文件放在assets目录下引用插入，更新后使用`mkdocs gh-deploy`命令会自动推送到网页。
 
-note:organization中有owner权限的人都可以合并更新，无需pull request，但最好还是在提交前让其他人先进行检查后再提交。
+\*note: organization中有owner权限的人都可以合并更新，无需pull request，但最好还是在提交前让其他人先进行检查后再提交。
 ## 🚀 快速开始
 
 ### 🔧 工具与资源

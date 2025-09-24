@@ -81,7 +81,7 @@ nav:
   - 首页: index.md
   - 工具与资源:
     - tools/index.md
-    - 模拟器使用方法: tools/simulators.md
+    - Simulator分析与使用: tools/simulators.md
     - lm_eval_harness 使用方法: tools/lm_eval_harness.md
   - Tutorial:
     - 概述: tutorial/index.md
@@ -89,6 +89,6 @@ nav:
     - 2. 常用工具: tutorial/common_tools.md
     - 3. 科研与写作: tutorial/research_and_writing.md
     - 4. 模型压缩与VLSI优化: tutorial/model_compression_vlsi.md
-    - 体系结构顶会: tutorials/arch_conferences.md
+    - 5. 体系结构顶会: tutorial/arch_conferences.md
   - 协作指南:
     - Git 协作流程: collaboration/git_workflow.md
