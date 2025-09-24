@@ -1,0 +1,137 @@
+/* 页面作者信息样式 */
+.page-authors-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-top: 1px solid var(--md-default-fg-color--lighter);
+    background-color: var(--md-default-bg-color--light);
+    border-radius: 8px;
+}
+
+.page-authors-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--md-default-fg-color--light);
+}
+
+.page-authors-header .icon {
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+}
+
+.page-authors-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.page-authors-meta-item {
+    display: flex;
+    align-items: center;
+    color: var(--md-default-fg-color--light);
+}
+
+.page-authors-meta-item .icon {
+    margin-right: 0.3rem;
+    width: 14px;
+    height: 14px;
+}
+
+.page-authors-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.page-authors-list .label {
+    color: var(--md-default-fg-color--light);
+    font-size: 0.85rem;
+}
+
+.page-authors-list .authors {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.page-author-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--md-primary-fg-color--transparent);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--md-primary-fg-color);
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.page-author-item:hover {
+    background-color: var(--md-primary-fg-color--light);
+    color: var(--md-primary-fg-color);
+    text-decoration: none;
+}
+
+.page-author-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.page-author-name {
+    font-weight: 500;
+}
+
+.page-author-percentage {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--md-default-fg-color--light);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.github-link:hover {
+    color: var(--md-primary-fg-color);
+    text-decoration: none;
+}
+
+.github-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+    .page-authors-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .page-authors-list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .page-authors-list .authors {
+        flex-wrap: wrap;
+    }
+}
+
+/* 深色主题适配 */
+[data-md-color-scheme="slate"] .page-authors-container {
+    background-color: var(--md-default-bg-color--dark);
+    border-color: var(--md-default-fg-color--lightest);
+}

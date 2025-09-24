@@ -1,0 +1,95 @@
+# 网站信息
+site_name: MQ-Group Hands-On
+site_url: https://MQ-Group.github.io/Hands_On/
+site_author: MQ Group
+site_description: 教程、工具与研究分享
+
+# Git 仓库信息
+repo_name: MQ-Group/Hands_On
+repo_url: https://github.com/MQ-Group/Hands_On
+edit_uri: edit/main/docs/ # 允许用户直接跳转到 GitHub 编辑页面
+
+# 主题配置 (Material for MkDocs)
+theme:
+  name: material
+  language: zh # 设置语言为中文
+  logo: assets/images/logo.svg # 你的 Logo
+  favicon: assets/images/favicon.png # 你的 Favicon
+  palette:
+    # 配色方案 (可根据喜好在官网调色板选择)
+    - scheme: default # 日间模式
+      primary: indigo # 主色
+      accent: blue # 强调色
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到夜间模式
+    - scheme: slate # 夜间模式
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: 切换到日间模式
+  features:
+    - navigation.tabs # 顶部导航标签
+    - navigation.sections # 左侧导航分组
+    - navigation.indexes # 使分组首页可点击
+    - navigation.expand # 左侧导航自动展开
+    - navigation.top # 返回顶部按钮
+    - search.suggest # 搜索建议
+    - search.highlight # 搜索高亮
+    - content.code.annotate # 代码行注释
+    - content.code.copy # 代码块一键复制
+    - content.tabs.link # 内容区选项卡
+    - announce.dismiss # 公告栏可关闭
+  custom_dir: overrides
+
+# 插件配置
+plugins:
+  - search:
+      lang: ja # 使用 ja (日语) 分词器，对中文支持更好
+  - git-revision-date-localized:
+      type: date
+      locale: zh
+      fallback_to_build_date: true
+      enable_creation_date: true
+      enable_modification_date: true
+
+# Markdown 扩展配置 (开启各种强大功能)
+markdown_extensions:
+  - pymdownx.highlight: # 代码高亮
+      anchor_linenums: true
+      line_spans: __span
+      pygments_style: solarized-light
+  - pymdownx.inlinehilite
+  - pymdownx.snippets # 引用其他文件
+  - pymdownx.superfences # 嵌套代码块
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - admonition # 美观的警告、注释框
+  - pymdownx.details # 可折叠块
+  - pymdownx.tabbed: # 选项卡
+      alternate_style: true
+  - attr_list # 给图片等元素添加 CSS 属性
+  - pymdownx.emoji: # 支持 emoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# 导航结构
+nav:
+  - 首页: index.md
+  - 工具与资源:
+    - tools/index.md
+    - 模拟器使用方法: tools/simulators.md
+    - lm_eval_harness 使用方法: tools/lm_eval_harness.md
+  - Tutorial:
+    - 概述: tutorial/index.md
+    - 1. 基础知识: tutorial/basic_knowledge.md
+    - 2. 常用工具: tutorial/common_tools.md
+    - 3. 科研与写作: tutorial/research_and_writing.md
+    - 4. 模型压缩与VLSI优化: tutorial/model_compression_vlsi.md
+    - 体系结构顶会: tutorials/arch_conferences.md
+  - 协作指南:
+    - Git 协作流程: collaboration/git_workflow.md
