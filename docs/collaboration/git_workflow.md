@@ -2,6 +2,7 @@
 
 本文档详细介绍了包括mkdocs静态网站Hands-On在内的Git协作流程，包括分支管理、代码审查、发布流程等。
 mkdcos与普通git项目的主要区别在于一个独立的gh-pages分支，无需管理自动根据main生成site设置。
+[git_learning_resource](https://www.runoob.com/git/git-tutorial.html)
 ## 分支策略
 
 ### 主分支

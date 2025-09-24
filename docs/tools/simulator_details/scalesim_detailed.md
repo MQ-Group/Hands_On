@@ -5,18 +5,12 @@
 SCALE-Sim v3是专门针对脉动阵列架构的CNN加速器仿真器，支持多种数据流、稀疏性、多核仿真等高级功能。
 
 ## 运行环境
-
-- **位置**: `/data5/wangmeiqi/simulator/scale-sim-v3/`
 - **Python环境**: base conda环境
 - **依赖**: numpy, pandas, matplotlib等
 
 ## 详细运行步骤
 
 ### 步骤1: 环境准备和安装
-
-```bash
-cd /data5/wangmeiqi/simulator/scale-sim-v3
-```
 
 **项目结构**：
 ```
@@ -38,11 +32,10 @@ scale-sim-v3/
 └── setup.py              # 安装脚本
 ```
 
-**安装过程**：
+**安装依赖**：
 ```bash
 # 安装依赖
 pip install -r requirements.txt
-
 # 安装SCALE-Sim（开发模式）
 pip install -e .
 ```
