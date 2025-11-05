@@ -4,6 +4,7 @@
 计算机体系结构的范围很大，可以认为包括了算法到电路之间的所有软硬件设计。
 以GPGPU为例，统一需要底层计算单元硬件-控制模块-指令与编译器支持-前端的软件设计。
 ![乘影GPGPU_arch1](im_triton/乘影arch_1.png)
+
 ![乘影GPGPU_arch2](im_triton/乘影_arch2.png)
 GPGPU的特点是SIMT，单指令多线程，在高度并行化同时保证了一定灵活的可编程性。得以通过大量的高性能编译器与算子库开发不断更新，对基本上所有可以通过并行进行加速的算法做支持，取得不错的加速效果。
 
@@ -35,7 +36,11 @@ extern "C" void solve(const float* A, const float* B, float* C, int N) {
     cudaDeviceSynchronize();
 }
 ```
-![cuda_arch1](im_triton/cuda编程示意图1.png)
+
+
+![cuda_arch1](im_triton/cuda编程示意图.png)
+
+
 ![cuda_arch2](im_triton/cuda编程示意图2.png)
 需要参展CUDA编程与GPU内存架构，手动实现所需线程、块...的管理，在进行优化时还要实现共享内存等更复杂的操作。
 
