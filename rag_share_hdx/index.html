@@ -1,0 +1,1477 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="教程、工具与研究分享">
+      
+      
+        <meta name="author" content="MQ Group">
+      
+      
+        <link rel="canonical" href="https://MQ-Group.github.io/Hands_On/rag_share_hdx/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Rag share hdx - MQ-Group Hands-On</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+  <!-- 页面作者统计样式 -->
+  <link rel="stylesheet" href="../assets/css/page-authors.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#heterrag-pim-rag" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="MQ-Group Hands-On" class="md-header__button md-logo" aria-label="MQ-Group Hands-On" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MQ-Group Hands-On
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rag share hdx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MQ-Group/Hands_On" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MQ-Group/Hands_On
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  工具与资源
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tutorial/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../collaboration/git_workflow/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  协作指南
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MQ-Group Hands-On" class="md-nav__button md-logo" aria-label="MQ-Group Hands-On" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MQ-Group Hands-On
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MQ-Group/Hands_On" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MQ-Group/Hands_On
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tools/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    工具与资源
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            工具与资源
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/simulators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulator分析与使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/lm_eval_harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    lm_eval_harness 使用方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../tutorial/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/basic_knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. 基础知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/common_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. 常用工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/research_and_writing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. 科研与写作
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/model_compression_vlsi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. 模型压缩与VLSI优化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/arch_conferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. 体系结构顶会
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/rag_share_hdx_markdown" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. RAG分享
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    协作指南
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            协作指南
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collaboration/git_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git 协作流程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.&nbsp; 研究背景
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-heterrag-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.&nbsp;HeterRAG Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3acceldimm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.AccelDIMM 硬件架构总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.AccelDIMM 硬件架构总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-selective-offloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.核心设计理念：选择性卸载 (Selective Offloading)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 整体架构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-accelhbm" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.&nbsp;AccelHBM 硬件架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. AccelHBM 硬件架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.核心设计理念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-top-level-processing-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.顶层处理模块 (Top-level Processing Module)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3pim-enabled-hbm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.PIM-enabled HBM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-heterrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.&nbsp;HeterRAG 的软件硬件协同优化与系统设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. HeterRAG 的软件硬件协同优化与系统设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.RAG 系统的两大系统级瓶颈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.三大软件硬件协同优化方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. &nbsp;实验评估：
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<p><img alt="alt text" src="../images/image-24%282%29.png" /></p>
+<h1 id="heterrag-pim-rag">HeterRAG 异构 PIM 加速 RAG 系统</h1>
+<h2 id="1">1.&nbsp;   研究背景</h2>
+<p>Retrieval-augmented Generation (RAG) 通过结合外部知识库，极大地增强了大型语言模型（LLM）在知识密集型任务上的表现 。</p>
+<p>RAG面临问题挑战：</p>
+<ol>
+<li>高带宽瓶颈 (Bandwidth Bottleneck):<br>
+<strong>检索阶段：</strong> 随机和不规则的内存访问模式导致带宽利用率低下 <br>
+<strong>生成阶段：</strong> 涉及大量的通用矩阵向量乘法 (GEMV) 操作，受限于内存带宽 。</li>
+<li>高内存瓶颈 (Capacity Bottleneck):<br>
+<strong>检索阶段：</strong> 需要维护大规模的知识库（文档、向量、索引），导致巨大的存储开销 。</li>
+</ol>
+<p>核心矛盾：</p>
+<ol>
+<li><strong>HBM-PIM 方案：</strong> 拥有极高带宽，适合解决“带宽瓶颈”；但容量小、成本高，无法满足 RAG 的“容量瓶颈” 。</li>
+<li><strong>DIMM-PIM 方案：</strong> 拥有大容量、低成本，适合解决“容量瓶颈”；但其带宽远低于 HBM，无法满足“带宽瓶颈” 。<br></li>
+</ol>
+<blockquote>
+<p><strong>补充知识：有关 DIMM 与 HBM 的介绍</strong><br />
+<strong>PIM</strong>：存内计算（Processing-In-Memory, PIM）<br>
+基于 <strong>DIMM</strong> 的 PIM：DIMM 采用 DDR 芯片的二维布局，从而降低制造成本，使用户能够以实惠的价格获得大容量内存。<br />
+基于 <strong>HBM</strong> 的 PIM：HBM 采用 3D 堆叠结构，通过 TSV 垂直连接，带来高带宽、低延迟和低功耗，但制造成本较高。</p>
+</blockquote>
+<p><img alt="alt text" src="../images/image-1.png" /><br></p>
+<h2 id="2-heterrag-architecture">2.&nbsp;HeterRAG Architecture</h2>
+<p><img alt="alt text" src="../images/image-3.png" /></p>
+<p>1.主机(Host):<br>
+分配“检索”任务给 AccelDIMM，“生成”任务给 AccelHBM
+进行数据传输和格式转换
+收集所有 AccelDIMM 返回的检索结果</p>
+<p>2.互连 (Interconnect)<br>
+系统允许你独立地增加 AccelDIMM（用于检索）或 AccelHBM（用于生成）的数量。
+定制化连接：可以通过 PCIe 插槽和 CXL 交换机连接不同数量的 PIM 设备，以满足 RAG 系统对“检索容量”或“生成能力”的特定需求</p>
+<p>3.AccelDIMM (DIMM 加速器)<br>
+离线 (Offline)： 海量（TB 级）的知识库索引被分割成多份，分别存储在不同的 AccelDIMM 设备中。
+在线 (Online)： 当查询请求到来时，主机会将请求<strong>“广播”给所有</strong>的 AccelDIMM。
+并行处理：所有 AccelDIMM 设备同时、并行地在各自存储的数据中执行搜索，然后各自返回最佳结果给主机。</p>
+<p>4.AccelHBM (HBM 加速器)<br>
+并行策略：
+张量并行 (Tensor Parallelism，默认)： 多个 AccelHBM 同时计算模型权重的不同部分，然后聚合结果。
+流水线并行 (Pipeline Parallelism)： 当模型非常大时，将其按层切分成多个阶段，像工厂流水线一样分配给不同的 AccelHBM 按顺序处理。</p>
+<p>5.执行流程 (Execution Flow)<br>
+[Host] 主机接收查询，将其转换为向量。<br>
+[Host → AccelDIMMs] 主机将此向量广播给所有 AccelDIMM。<br>
+[AccelDIMMs] (检索) 所有 AccelDIMM 并行搜索，各自返回 Top-k 结果。<br>
+[Host] 主机聚合所有结果，排序后得到最终的 Top-k。<br>
+[Host] 主机根据向量 ID 找到对应的文档原文，并将其与原始查询打包成 LLM 的输入张量。<br>
+[Host → AccelHBMs] 主机将此张量发送给 AccelHBM。<br>
+[AccelHBMs] (生成) AccelHBM 执行 LLM 推理，生成最终答案。<br></p>
+<h2 id="3acceldimm">3.AccelDIMM 硬件架构总结</h2>
+<h3 id="1-selective-offloading">1.核心设计理念：选择性卸载 (Selective Offloading)<br></h3>
+<p>AccelDIMM 专为 ANNS（近似最近邻搜索）操作设计。ANNS 包含多个步骤，但并非所有步骤都适合 PIM。</p>
+<p>1.不卸载的任务：<br>
+ <strong>• 邻居抓取</strong>: 此任务涉及内存访问和结果过滤。但维护一个“已访问节点”列表会引入显著的硬件面积开销，不适合卸载。<br>
+<strong>• 队列更新</strong>: 此任务需要对计算结果进行集中聚合和排序，其逻辑不适合 PIM。</p>
+<p>2.卸载的任务：<br>
+<strong>• 距离计算</strong>: 这是 ANNS 中计算最密集且最易并行的部分。因此，内存卸载严格限制 (restricted) 在此操作。</p>
+<h3 id="2">2. 整体架构</h3>
+<p><img alt="&lt;alt text&gt;" src="../images/image-25%282%29.png" /><br>
+<strong>1.顶层处理模块 (Top-level Processing Module)</strong><br>
+TPM 是 AccelDIMM 的总控制中心，负责管理整个 ANNS 流程。
+构成主要包含指令队列、指令解码器 和 功能块 (FB)。
+功能：接收并解码主机指令，启动 ANNS 操作。FB 负责管理邻居抓取和队列更新，并生成 PIM 请求以进行距离计算。<br></p>
+<p><strong>2.内存控制器 (Memory Controller)</strong><br>
+PIM 扩展：集成了 PIM 扩展模块，用于处理 地址映射 和 PIM 指令生成。<br></p>
+<p><strong>3.PIM-enabled DIMM (启用 PIM 的内存条)</strong><br>
+执行存内计算的核心硬件。<br>
+关键设计决策 (Rank-level vs. Bank-level)：Bank 级部署计算,将导致大量计算资源空闲和更高的面积开销。因此，本设计选择在<strong>Rank 级</strong>（更大的内存单元）部署距离计算模块，以提高效率。</p>
+<p><img alt="alt text" src="../images/image-5.png" /></p>
+<p><strong>(a) DIMM 级处理模块 (DPM)</strong><br>
+从顶层模块 (TPM) 接收 PIM 指令，然后根据指令中的“Rank ID”，将任务分发给对应的 Rank 级处理模块 (RPM)。它内部有专用缓冲区，用来临时存储所有 RPM 完成的计算结果。它以“轮询”的方式，将收集到的结果通过标准内存接口传回给 AccelDIMM 的顶层模块 (TPM) 进行排序。 <br />
+<strong>(b)Rank 级处理模块 (RPM)</strong><br>
+每个 Rank 都配有一个，因此它们可以并行处理任务，主要负责解码与缓存，并执行计算距离。比较巧妙的地方它并不直接从DRAM取数据，而是先检查本地高速缓存，如果缓存命中：直接将向量数据送去计算，如果缓存未命中：它会自动生成标准 DDR 命令，拿取数据进行计算，</p>
+<h2 id="4-accelhbm">4.&nbsp;AccelHBM 硬件架构</h2>
+<h3 id="1_1">1.核心设计理念<br></h3>
+<p>AccelHBM 专为 LLM（大语言模型）推理的“生成”阶段设计。其核心策略是在“操作级别 (operation level)”进行加速，即对 LLM 中的不同运算类型进行区别处理。
+LLM 推理主要涉及三类操作：<br></p>
+<p><strong>1.GEMM (矩阵-矩阵乘法)</strong><br>
+计算逻辑更复杂或计算更密集，这些操作在内存之外处理，即在 AccelHBM 的顶层处理模块 (TPM) 上执行。<br>
+<strong>2.GEMV (矩阵-向量乘法)</strong><br>
+GEMV 具有<strong>低算术强度</strong>,是典型的“内存带宽受限”操作,完全卸载到 PIM-HBM 内存中执行。<br>
+<strong>3.其他操作</strong> (如 LayerNorm, RMSNorm, Softmax 等元素级计算和归一化)<br></p>
+<h3 id="2-top-level-processing-module">2.顶层处理模块 (Top-level Processing Module)</h3>
+<p>TPM 是 AccelHBM 的“大脑”和“本地计算单元”，其内部的功能块 (Functional Block - FB) 负责处理所有未卸载到内存的任务。<br></p>
+<p align="center">
+  <img src="./images/image-8.png" alt="图片说明" width=200"/>
+</p>
+
+<h3 id="3pim-enabled-hbm">3.PIM-enabled HBM <br></h3>
+<p>负责存储模型权重、KV 缓存，并在内存中就地执行 GEMV。<br>
+1.关键架构差异 (vs. AccelDIMM)：</p>
+<p>&nbsp; &nbsp; &nbsp; <strong>AccelDIMM (检索)：</strong> 由于 ANNS 访问模式稀疏，采用 Rank-level (Rank 级) 部署计算单元。</p>
+<p>&nbsp; &nbsp; &nbsp; <strong>AccelHBM (生成)：</strong> 为了最大化计算效率，借鉴 Newton等先进设计，采用 Bank-level (Bank 级) 部署处理模块。</p>
+<p>&nbsp; &nbsp; &nbsp; <strong>Bank 级处理模块 (BPM)：</strong>
+是 HBM 内部的实际计算单元
+每个 BPM 包含两个用于向量内积 (vector inner product) 操作的计算单元
+<img alt="alt text" src="../images/image-7.png" /></p>
+<h2 id="5-heterrag">5.&nbsp;HeterRAG 的软件硬件协同优化与系统设计</h2>
+<h3 id="1rag">1.RAG 系统的两大系统级瓶颈<br></h3>
+<p><strong>•数据局部性</strong>: RAG 系统存在高度局部性（少数文档被高频访问，且迭代查询常复用文档），但现有系统未利用此特性，导致冗余计算和数据传输。<br>
+<strong>•严格串行:</strong> “检索”和“生成”阶段必须串行执行，导致硬件（AccelDIMM 或 AccelHBM）空闲，利用率低下。</p>
+<h3 id="2_1">2.三大软件硬件协同优化方案</h3>
+<p><strong>1.感知局部性的检索</strong><br>
+&nbsp;&nbsp;&nbsp;• 硬件优化 (RPM 缓存): 在 AccelDIMM 的 RPM 模块中增加了向量缓存 (vertex vector cache)，用于缓存高频访问的向量，减少DRAM访问。<br>
+&nbsp;&nbsp;&nbsp;• 软件优化 (迭代加速): 在迭代 RAG 场景中，复用上一轮的搜索结果作为新一轮搜索的“起始点”，加速搜索收敛。</p>
+<p><strong>2.感知局部性的生成</strong><br>
+&nbsp;&nbsp;&nbsp;• 核心问题: 解决 LLM 生成 (Prefilling 阶段) 中 KV 缓存的冗余计算和高内存占用问题。<br>
+&nbsp;&nbsp;&nbsp;• 解决方案 (前缀树 + 选择性计算):<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;• 1.使用前缀树 (Prefix Tree) 来组织文档序列。<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;• 2.将 KV 缓存拆分为<strong>稠密</strong>(文档固有，只存一份)和<strong>稀疏</strong>（序列相关，只存 10-20% 的重要 Token）。<br>
+&nbsp;&nbsp;&nbsp;• 硬件支持: 在 AccelHBM 的 TPM 中增加了三个专用硬件（树搜索单元、KV 替换单元、Token 过滤单元）来高效执行此方案。<br>
+<strong>3.细粒度并行流水线</strong><br>
+&nbsp;&nbsp;&nbsp;• 核心目标: 打破检索和生成的串行依赖，实现两个阶段的执行重叠 (Overlap)。<br>
+&nbsp;&nbsp;&nbsp;• 解决方案: 主机 (Host) 不再等待所有检索任务完成，而是定期汇总。它会提前发送那些“已完成”或“高置信度”的部分检索结果给 AccelHBM，使其“抢跑”生成任务，从而隐藏检索延迟，提升系统总吞吐量。</p>
+<p>通用性：HeterRAG 的异构 PIM 架构（高带宽 HBM + 大容量 DIMM）并不仅仅局限于 RAG，它适用于任何<strong>同时需要高内存带宽和大内存容量</strong>的应用。
+该架构的硬件支持如图遍历、GEMM 和 GEMV 等多种基础运算，使其具备运行图神经网络 (GNNs) 等更广泛应用的能力</p>
+<h2 id="6">6. &nbsp;实验评估：</h2>
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>参数规模</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-2 XL</td>
+<td>1.5B</td>
+<td>基础大型语言模型</td>
+</tr>
+<tr>
+<td>LLaMA2-7B</td>
+<td>7B</td>
+<td>中型模型，用于性能测试</td>
+</tr>
+<tr>
+<td>LLaMA2-70B</td>
+<td>70B</td>
+<td>超大模型，用于可扩展性评估</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>数据集名称</th>
+<th>缩写</th>
+<th>数据类型</th>
+<th>简要说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WIKI-QA</td>
+<td>WIKI</td>
+<td>问答型文本</td>
+<td>基于维基百科的问答对</td>
+</tr>
+<tr>
+<td>Web Questions</td>
+<td>WEB</td>
+<td>网络问答</td>
+<td>来源于真实网页查询</td>
+</tr>
+<tr>
+<td>Natural Questions</td>
+<td>NQ</td>
+<td>自然语言问答</td>
+<td>谷歌搜索问题数据集</td>
+</tr>
+<tr>
+<td>Trivia-QA</td>
+<td>TQ</td>
+<td>知识问答</td>
+<td>基于百科与问答网站</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>系统方案</th>
+<th>描述</th>
+<th>特点说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU-GPU</td>
+<td>传统 CPU + GPU 架构</td>
+<td>真实系统基准性能测试</td>
+</tr>
+<tr>
+<td>NaiveHBM</td>
+<td>仅 HBM-PIM 方案</td>
+<td>高带宽内存加速计算</td>
+</tr>
+<tr>
+<td>OnlyDIMM</td>
+<td>仅 DIMM-PIM 方案</td>
+<td>大容量、近存储计算特性</td>
+</tr>
+</tbody>
+</table>
+<p align="center">
+  <img src="./images/image-9.png" alt="图片说明" width=400"/>
+</p>
+
+<p><strong>•吞吐量</strong><br></p>
+<p align="center">
+  <img src="./images/image-27(2).png" alt="图片说明" width=350"/>
+</p>
+
+<p><strong>•延迟</strong><br></p>
+<p align="center">
+  <img src="./images/image-10.png" alt="图片说明" width=400"/>
+</p>
+<p><br></p>
+<p><strong>•能效</strong></p>
+<p align="center">
+  <img src="./images/image-14.png" alt="图片说明" width=400"/>
+</p>
+<p><br></p>
+<h1 id="rago-rag">RAGO  面向 RAG 服务的系统性性能优化</h1>
+<h2 id="1_2">1.简介：问题与贡献</h2>
+<p>RAG服务在部署时面临三个核心挑战:<br>
+<strong>系统异构性：</strong> RAG 系统包含众多异构组件（如向量搜索、LLM、数据库编码器、查询重写器、结果重排器等）。<br>
+<strong>性能可变性：</strong> 不同的 RAG 配置（如数据库大小、检索频率、模型选择）导致性能差异巨大，系统瓶颈可能在检索和推理之间“漂移” 。<br>
+<strong>优化挑战：</strong> 这种异构性和可变性使得设计高效的 RAG 服务系统（即如何制定调度策略）变得极其困难</p>
+<h2 id="2ragschema">2.RAGSchema介绍</h2>
+<p>RAGSchema 是 RAGO 框架的基础，是一个结构化和模块化的抽象 ，用于捕获各种 RAG 服务工作负载的关键性能相关属性 ，同时也是一种 RAG 服务抽象，它封装了一组基本的、与性能相关的工作负载属性 。它同时被视为一种结构化抽象，捕获了广泛的 RAG 算法，并作为性能优化的基础 。
+主要包括:
+1. 管道的执行流程，包含哪些可选组件。<br>
+2. 组件的配置。<br></p>
+<h2 id="3rago">3.RAGO 框架如何工作？</h2>
+<h3 id="31-high-level-trade-off-model">3.1 &nbsp;高层次性能权衡模型 (High-level Trade-off Model)</h3>
+<p>首先对 RAG 管道中的关键组件（推理和检索）进行性能建模，以进行高层次的权衡分析：<br>
+<strong>[I]推理组件 (Inference)：</strong><br>
+对于一个模型大小为 <span class="arithmatex">\(M\)</span>、序列长度为 <span class="arithmatex">\(L\)</span> 的推理任务（<span class="arithmatex">\(L\)</span> 较短时），其计算量 (FLOPs) 约等于：</p>
+<div align="center">
+
+$FLOPs_{inference}\approx2 \cdot M \cdot L$ 
+
+</div>
+
+<p><strong>[II]检索组件 (Retrieval)：</strong><br> 检索工作负载由每个查询访问的数据库向量字节数来近似描述。给定 <span class="arithmatex">\(N_{dbvec}\)</span> 个数据库向量，每个向量 <span class="arithmatex">\(B_{vec}\)</span> 字节，每个查询扫描 <span class="arithmatex">\(P_{scan}\)</span> 百分比的向量，总字节数约等于：<br></p>
+<div align="center">
+
+$B_{retrieval}\approx N_{dbvec}\cdot B_{vec}\cdot\frac{P_{scan}}{100}$ 
+</div>
+
+<p><strong>[III]端到端吞吐量 (End-to-end RAG performance)：</strong><br>
+ RAG 管道的吞吐量由其最慢的阶段（瓶颈）决定 。论文中给出的 <span class="arithmatex">\(m\)</span> 个阶段的吞吐量公式为：
+ 
+<div align="center">
+
+ $QPS_{RAG}=min(QPS_{1},QPS_{2},...,QPS_{m})$ 42
+
+</div>
+</p>
+<h3 id="32-rago-rago-scheduling-decisions">3.2&nbsp;RAGO 调度决策(RAGO Scheduling Decisions)<br></h3>
+<p>RAGO 框架通过优化以下三个维度的决策来生成最优调度方案 ：<br>
+<strong>[I] 任务放置(Task placement)：</strong><br>
+RAG 管道包含多个模型组件（如查询重写、重排、前缀计算等）。RAGO 决定是将这些组件并置在同一组 XPU 上，还是将它们解耦到不同的 XPU 集群上。</p>
+<p><img alt="alt text" src="../images/image-15.png" /><br></p>
+<p>Figure 13  展示了 RAGO 的放置策略。它允许管道中相邻的阶段（如 Database Encode, ReWrite, ReRank, Prefix）进行并置 ，但 Retrieval（运行在 CPU）和 Decode（解码）阶段总是解耦的 。</p>
+<p><strong>[II] 资源分配(Resource allocation)</strong>：<br>
+在确定放置策略后，RAGO 为每个（并置或解耦的）流水线阶段分配计算资源。<br>
+这包括为推理任务分配 XPU 的数量 ，以及为检索任务分配 CPU 服务器的数量 ，同时确保满足内存容量需求 。<br></p>
+<p><strong>[III] 批处理策略(Batching policy)</strong>：
+RAGO 为管道中的每个阶段启用可变的批处理大小 (batch sizes) ，以在延迟和吞吐量之间进行权衡 。<br>
+例如，它支持微批处理 (micro-batches) 以及在解码阶段使用连续批处理 (continuous batching) 。<br></p>
+<h3 id="33">3.3 &nbsp;搜索最优调度</h3>
+<p>RAGO 通过一个三步的穷举搜索过程  来找到最优调度：</p>
+<p><strong>[I]性能分析 (Performance Profiling)：</strong>  首先，RAGO 使用分析模型独立评估 RAGSchema 中每个阶段（如检索、前缀、解码等）在不同资源分配和批处理大小下的性能 。</p>
+<p><strong>[II]调度生成 (Schedule Generation)：</strong>  RAGO 生成所有可能的调度组合，遍历 (a) 放置策略，(b) 资源分配策略，和 (c) 批处理策略 。</p>
+<p><strong>[III]端到端性能评估：</strong>  RAGO 计算每个组合调度的端到端性能（TTFT, QPS/Chip），并识别出帕累托前沿（即最优的权衡曲线）。</p>
+<h2 id="4">4.&nbsp;结论：</h2>
+<p>RAG 的瓶颈是动态变化的
+Case I (超大规模检索)： 瓶颈是检索 (Retrieval) 。当使用 8B LLM 时，检索占了 80% 以上的时间 。</p>
+<p align="center">
+  <img src="./images/image-21.png" alt="图片说明" width=600"/>
+</p>
+<p>Case II (长上下文处理)： 瓶颈不是检索（占比 &lt; 1%），而是数据库编码 (Database Encode) 。一个 120M 的编码器模型，由于要处理的 Token 太多，其开销甚至超过了 70B 的 LLM 。</p>
+<p align="center">
+  <img src="./images/image-20.png" alt="图片说明" width=600"/>
+</p>
+
+<p>Case III (迭代检索)： 瓶颈在于解码阶段的空闲 (idleness) 。解码器需要暂停，等待凑齐一个批次的迭代检索请求，导致 TPOT（每 Token 延迟）大幅增加 。</p>
+<p align="center">
+  <img src="./images/image-19.png" alt="图片说明" width=350"/>
+</p>
+
+<p><img alt="alt text" src="../images/image-22.png" />
+Case IV (查询重写器)： 瓶颈是查询重写器 (Query Rewriter) 导致的 TTFT（首个 Token 延迟）增加 。因为它是一个自回归模型，必须串行执行，导致 TTFT 增加了 2.4 倍 。
+<img alt="alt text" src="../images/image-23.png" /></p>
+<h1 id="ragflow">RAGFlow 工具介绍</h1>
+<p>开源项目地址：https://github.com/infiniflow/ragflow<br></p>
+<h2 id="_1">一、工具简介</h2>
+<p>RAGFlow 是一个开源的 Retrieval-Augmented Generation（RAG）引擎，基于“深度文档理解”（deep document understanding）设计，旨在把复杂多样的文档数据转化为可供大语言模型（LLM）使用的高质量上下文层。其定位是“企业级可用”、“流程化可部署”的 RAG 解决方案。 </p>
+<p>主要特点包括：<br></p>
+<p>&nbsp;&nbsp;&nbsp;<strong>•</strong> 支持大规模、多格式的文档输入（Word、Excel、PPT、扫描件、结构化＋非结构化数据）<br>
+&nbsp;&nbsp;&nbsp;<strong>•</strong> 提供“检索＋生成”完整流程，并结合 Agent（智能代理／流程控制）能力<br>
+&nbsp;&nbsp;&nbsp;<strong>•</strong> 强调引用可追溯、降低幻觉（hallucination）风险、提升生成质量。<br></p>
+<h2 id="_2">二、核心功能</h2>
+<hr />
+<h3 id="1_3">🔹 功能 1：文档理解 + 异构数据支持</h3>
+<ul>
+<li>
+<p><strong>支持多种数据源／格式：</strong><br />
+  Word 文档、幻灯片、Excel、纯文本、图片、扫描件、网页、结构化数据等。</p>
+</li>
+<li>
+<p><strong>深度理解文档结构：</strong><br />
+  能识别表格、图片、扫描件、版面结构、段落标题、目录等信息，从而生成更合理的“切片”（chunking）用于后续检索。</p>
+</li>
+<li>
+<p><strong>模板化切块（Template-based Chunking）：</strong><br />
+  每份文档可按照合理逻辑（例如按章节、目录、版面）被分成多个检索单元。<br />
+  这样，即使资料“格式混乱”或“含有图片表格”，也能被检索与问答系统充分利用，而不仅限于纯文本。</p>
+</li>
+</ul>
+<hr />
+<h3 id="2rag-workflow">🔹 功能 2：检索＋重排序＋生成（RAG Workflow）</h3>
+<ul>
+<li>
+<p><strong>检索（Recall）：</strong><br />
+  将文档切块后建立索引／向量数据库，用户查询时先检索相关片段。</p>
+</li>
+<li>
+<p><strong>重排序（Re-ranking）：</strong><br />
+  对初步检索结果进行排序优化，使最相关内容优先展示。</p>
+</li>
+<li>
+<p><strong>生成（Generation）：</strong><br />
+  将检索片段作为上下文输入至 LLM（可配置模型），生成带有引用出处的可靠答案。</p>
+</li>
+<li>
+<p><strong>引用机制：</strong><br />
+  RAGFlow 支持“有依据地回答”，可附带参考片段、页码、来源信息，降低模型幻觉。</p>
+</li>
+<li>
+<p><strong>端到端自动化：</strong><br />
+  从文档导入（ingest）到查询接口、到聊天／助手模式，整个流程可自动化执行。</p>
+</li>
+</ul>
+<hr />
+<h3 id="agent">🔹 Agent 模板／工作流支持</h3>
+<ul>
+<li>
+<p><strong>可配置的 Agent 模板：</strong><br />
+  除了“纯检索问答”，RAGFlow 提供 Agent 模板，可执行多步推理、工具调用、代码执行、甚至 Web 搜索。</p>
+</li>
+<li>
+<p><strong>可视化工作流构建：</strong><br />
+  用户可在 UI 中通过拖拽节点的方式直观地构建 Agent 工作流，降低开发与集成门槛。</p>
+</li>
+</ul>
+<hr />
+<h3 id="_3">🔹 易用性 &amp; 可集成性</h3>
+<ul>
+<li>
+<p><strong>Web UI：</strong><br />
+  通过图形界面上传文档、管理知识库、创建助手或 Agent。</p>
+</li>
+<li>
+<p><strong>API 接口：</strong><br />
+  提供 HTTP 与 SDK 调用方式，可在现有系统或产品中集成 RAG 功能。</p>
+</li>
+<li>
+<p><strong>多模型支持：</strong><br />
+  可配置为使用 OpenAI 等云端模型，也可部署本地 LLM，灵活适配不同环境。</p>
+</li>
+<li>
+<p><strong>快速部署：</strong><br />
+  支持 Docker，一键运行。<br />
+  提供精简版（slim）与完整版镜像，满足不同部署需求。</p>
+</li>
+</ul>
+<h2 id="_4">三、本地配置流程</h2>
+<hr />
+<h3 id="1-docker-desktop">🔹 步骤 1：安装 Docker Desktop</h3>
+<ol>
+<li>下载并安装 <strong>Docker Desktop for Windows</strong>。<br />
+   安装完成后，确保 Docker 服务已启动。</li>
+</ol>
+<h2 id="_5"><img alt="alt text" src="../images/image-24.png" /></h2>
+<h3 id="2-ragflow">🔹 步骤 2：启动 RAGFlow 服务</h3>
+<ol>
+<li>进入项目所在文件夹。  </li>
+<li>顺序执行以下命令：</li>
+</ol>
+<p>```bash
+   docker compose up -d
+   docker logs -f ragflow-server</p>
+<p><img alt="alt text" src="../images/image-25.png" /></p>
+<h3 id="3-ui">🔹 步骤 3：访问 UI 界面</h3>
+<ol>
+<li>
+<p>复制终端输出中的访问网址。</p>
+</li>
+<li>
+<p>在浏览器中打开即可进入 RAGFlow 的 Web UI。<br></p>
+</li>
+</ol>
+<p><img alt="alt text" src="../images/image-26.png" /></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月5日 06:43:53 UTC">2025年11月5日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月4日 03:41:22 UTC">2025年11月4日</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+  <!-- 页面作者统计脚本 -->
+  <script src="../assets/js/page-authors.js"></script>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate", "content.code.copy", "content.tabs.link", "announce.dismiss"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../assets/javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
