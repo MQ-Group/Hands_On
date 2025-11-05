@@ -1151,7 +1151,7 @@
   
 
 
-<p><img alt="alt text" src="./images/image-24(2).png" /></p>
+<p><img alt="alt text" src="../images_rag/image-24%282%29.png" /></p>
 <h1 id="heterrag-pim-rag">HeterRAG 异构 PIM 加速 RAG 系统</h1>
 <h2 id="1">1.&nbsp;   研究背景</h2>
 <p>Retrieval-augmented Generation (RAG) 通过结合外部知识库，极大地增强了大型语言模型（LLM）在知识密集型任务上的表现 。</p>
@@ -1174,9 +1174,9 @@
 基于 <strong>DIMM</strong> 的 PIM：DIMM 采用 DDR 芯片的二维布局，从而降低制造成本，使用户能够以实惠的价格获得大容量内存。<br />
 基于 <strong>HBM</strong> 的 PIM：HBM 采用 3D 堆叠结构，通过 TSV 垂直连接，带来高带宽、低延迟和低功耗，但制造成本较高。</p>
 </blockquote>
-<p><img alt="alt text" src="./images/image-1.png" /><br></p>
+<p><img alt="alt text" src="./images_rag_rag/image-1.png" /><br></p>
 <h2 id="2-heterrag-architecture">2.&nbsp;HeterRAG Architecture</h2>
-<p><img alt="alt text" src="./images/image-3.png" /></p>
+<p><img alt="alt text" src="./images_rag_rag/image-3.png" /></p>
 <p>1.主机(Host):<br>
 分配“检索”任务给 AccelDIMM，“生成”任务给 AccelHBM
 进行数据传输和格式转换
@@ -1209,7 +1209,7 @@
 <p>2.卸载的任务：<br>
 <strong>• 距离计算</strong>: 这是 ANNS 中计算最密集且最易并行的部分。因此，内存卸载严格限制 (restricted) 在此操作。</p>
 <h3 id="2">2. 整体架构</h3>
-<p><img alt="&lt;alt text&gt;" src="./images/image-25(2).png" /><br>
+<p><img alt="&lt;alt text&gt;" src="./images_rag_rag/image-25(2).png" /><br>
 <strong>1.顶层处理模块 (Top-level Processing Module)</strong><br>
 TPM 是 AccelDIMM 的总控制中心，负责管理整个 ANNS 流程。
 构成主要包含指令队列、指令解码器 和 功能块 (FB)。
@@ -1219,7 +1219,7 @@ PIM 扩展：集成了 PIM 扩展模块，用于处理 地址映射 和 PIM 指�
 <p><strong>3.PIM-enabled DIMM (启用 PIM 的内存条)</strong><br>
 执行存内计算的核心硬件。<br>
 关键设计决策 (Rank-level vs. Bank-level)：Bank 级部署计算,将导致大量计算资源空闲和更高的面积开销。因此，本设计选择在<strong>Rank 级</strong>（更大的内存单元）部署距离计算模块，以提高效率。</p>
-<p><img alt="alt text" src="./images/image-5.png" /></p>
+<p><img alt="alt text" src="./images_rag_rag/image-5.png" /></p>
 <p><strong>(a) DIMM 级处理模块 (DPM)</strong><br>
 从顶层模块 (TPM) 接收 PIM 指令，然后根据指令中的“Rank ID”，将任务分发给对应的 Rank 级处理模块 (RPM)。它内部有专用缓冲区，用来临时存储所有 RPM 完成的计算结果。它以“轮询”的方式，将收集到的结果通过标准内存接口传回给 AccelDIMM 的顶层模块 (TPM) 进行排序。 <br />
 <strong>(b)Rank 级处理模块 (RPM)</strong><br>
@@ -1236,7 +1236,7 @@ GEMV 具有<strong>低算术强度</strong>,是典型的“内存带宽受限”
 <h3 id="2-top-level-processing-module">2.顶层处理模块 (Top-level Processing Module)</h3>
 <p>TPM 是 AccelHBM 的“大脑”和“本地计算单元”，其内部的功能块 (Functional Block - FB) 负责处理所有未卸载到内存的任务。<br></p>
 <p align="center">
-  <img src="./images/image-8.png" alt="图片说明" width=200"/>
+  <img src="./images_rag/image-8.png" alt="图片说明" width=200"/>
 </p>
 
 <h3 id="3pim-enabled-hbm">3.PIM-enabled HBM <br></h3>
@@ -1247,7 +1247,7 @@ GEMV 具有<strong>低算术强度</strong>,是典型的“内存带宽受限”
 <p>&nbsp; &nbsp; &nbsp; <strong>Bank 级处理模块 (BPM)：</strong>
 是 HBM 内部的实际计算单元
 每个 BPM 包含两个用于向量内积 (vector inner product) 操作的计算单元
-<img alt="alt text" src="./images/image-7.png" /></p>
+<img alt="alt text" src="../images_rag/image-7.png" /></p>
 <h2 id="5-heterrag">5.&nbsp;HeterRAG 的软件硬件协同优化与系统设计</h2>
 <h3 id="1rag">1.RAG 系统的两大系统级瓶颈<br></h3>
 <p><strong>•数据局部性</strong>: RAG 系统存在高度局部性（少数文档被高频访问，且迭代查询常复用文档），但现有系统未利用此特性，导致冗余计算和数据传输。<br>
@@ -1357,22 +1357,22 @@ GEMV 具有<strong>低算术强度</strong>,是典型的“内存带宽受限”
 </tbody>
 </table>
 <p align="center">
-  <img src="./images/image-9.png" alt="图片说明" width=400"/>
+  <img src="./images_rag/image-9.png" alt="图片说明" width=400"/>
 </p>
 
 <p><strong>•吞吐量</strong><br></p>
 <p align="center">
-  <img src="./images/image-27(2).png" alt="图片说明" width=350"/>
+  <img src="./images_rag/image-27(2).png" alt="图片说明" width=350"/>
 </p>
 
 <p><strong>•延迟</strong><br></p>
 <p align="center">
-  <img src="./images/image-10.png" alt="图片说明" width=400"/>
+  <img src="./images_rag/image-10.png" alt="图片说明" width=400"/>
 </p>
 <p><br></p>
 <p><strong>•能效</strong></p>
 <p align="center">
-  <img src="./images/image-14.png" alt="图片说明" width=400"/>
+  <img src="./images_rag/image-14.png" alt="图片说明" width=400"/>
 </p>
 <p><br></p>
 <h1 id="rago-rag">RAGO  面向 RAG 服务的系统性性能优化</h1>
@@ -1416,7 +1416,7 @@ $B_{retrieval}\approx N_{dbvec}\cdot B_{vec}\cdot\frac{P_{scan}}{100}$
 <p>RAGO 框架通过优化以下三个维度的决策来生成最优调度方案 ：<br>
 <strong>[I] 任务放置(Task placement)：</strong><br>
 RAG 管道包含多个模型组件（如查询重写、重排、前缀计算等）。RAGO 决定是将这些组件并置在同一组 XPU 上，还是将它们解耦到不同的 XPU 集群上。</p>
-<p><img alt="alt text" src="./images/image-15.png" /><br></p>
+<p><img alt="alt text" src="../images_rag/image-15.png" /><br></p>
 <p>Figure 13  展示了 RAGO 的放置策略。它允许管道中相邻的阶段（如 Database Encode, ReWrite, ReRank, Prefix）进行并置 ，但 Retrieval（运行在 CPU）和 Decode（解码）阶段总是解耦的 。</p>
 <p><strong>[II] 资源分配(Resource allocation)</strong>：<br>
 在确定放置策略后，RAGO 为每个（并置或解耦的）流水线阶段分配计算资源。<br>
@@ -1433,21 +1433,21 @@ RAGO 为管道中的每个阶段启用可变的批处理大小 (batch sizes) ，
 <p>RAG 的瓶颈是动态变化的
 Case I (超大规模检索)： 瓶颈是检索 (Retrieval) 。当使用 8B LLM 时，检索占了 80% 以上的时间 。</p>
 <p align="center">
-  <img src="./images/image-21.png" alt="图片说明" width=600"/>
+  <img src="./images_rag/image-21.png" alt="图片说明" width=600"/>
 </p>
 <p>Case II (长上下文处理)： 瓶颈不是检索（占比 &lt; 1%），而是数据库编码 (Database Encode) 。一个 120M 的编码器模型，由于要处理的 Token 太多，其开销甚至超过了 70B 的 LLM 。</p>
 <p align="center">
-  <img src="./images/image-20.png" alt="图片说明" width=600"/>
+  <img src="./images_rag/image-20.png" alt="图片说明" width=600"/>
 </p>
 
 <p>Case III (迭代检索)： 瓶颈在于解码阶段的空闲 (idleness) 。解码器需要暂停，等待凑齐一个批次的迭代检索请求，导致 TPOT（每 Token 延迟）大幅增加 。</p>
 <p align="center">
-  <img src="./images/image-19.png" alt="图片说明" width=350"/>
+  <img src="./images_rag/image-19.png" alt="图片说明" width=350"/>
 </p>
 
-<p><img alt="alt text" src="./images/image-22.png" />
+<p><img alt="alt text" src="../images_rag/image-22.png" />
 Case IV (查询重写器)： 瓶颈是查询重写器 (Query Rewriter) 导致的 TTFT（首个 Token 延迟）增加 。因为它是一个自回归模型，必须串行执行，导致 TTFT 增加了 2.4 倍 。
-<img alt="alt text" src="./images/image-23.png" /></p>
+<img alt="alt text" src="../images_rag/image-23.png" /></p>
 <h1 id="ragflow">RAGFlow 工具介绍</h1>
 <p>开源项目地址：https://github.com/infiniflow/ragflow<br></p>
 <h2 id="_1">一、工具简介</h2>
@@ -1538,7 +1538,7 @@ Case IV (查询重写器)： 瓶颈是查询重写器 (Query Rewriter) 导致的
 <li>下载并安装 <strong>Docker Desktop for Windows</strong>。<br />
    安装完成后，确保 Docker 服务已启动。</li>
 </ol>
-<h2 id="_5"><img alt="alt text" src="./images/image-24.png" /></h2>
+<h2 id="_5"><img alt="alt text" src="../images_rag/image-24.png" /></h2>
 <h3 id="2-ragflow">🔹 步骤 2：启动 RAGFlow 服务</h3>
 <ol>
 <li>进入项目所在文件夹。  </li>
@@ -1547,7 +1547,7 @@ Case IV (查询重写器)： 瓶颈是查询重写器 (Query Rewriter) 导致的
 <p>```bash
    docker compose up -d
    docker logs -f ragflow-server</p>
-<p><img alt="alt text" src="./images/image-25.png" /></p>
+<p><img alt="alt text" src="../images_rag/image-25.png" /></p>
 <h3 id="3-ui">🔹 步骤 3：访问 UI 界面</h3>
 <ol>
 <li>
@@ -1557,7 +1557,7 @@ Case IV (查询重写器)： 瓶颈是查询重写器 (Query Rewriter) 导致的
 <p>在浏览器中打开即可进入 RAGFlow 的 Web UI。<br></p>
 </li>
 </ol>
-<p><img alt="alt text" src="./images/image-26.png" /></p>
+<p><img alt="alt text" src="../images_rag/image-26.png" /></p>
 
 
 
@@ -1580,7 +1580,7 @@ Case IV (查询重写器)： 瓶颈是查询重写器 (Query Rewriter) 导致的
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月5日 06:43:53 UTC">2025年11月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月5日 08:08:04 UTC">2025年11月5日</span>
   </span>
 
     
