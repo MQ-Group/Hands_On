@@ -3406,13 +3406,13 @@
 <p><img alt="Triton 体系结构" src="../im_triton/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" />
 计算机体系结构的范围很大，可以认为包括了算法到电路之间的所有软硬件设计。
 以GPGPU为例，统一需要底层计算单元硬件-控制模块-指令与编译器支持-前端的软件设计。
-<img alt="乘影GPGPU_arch1" src="../im_triton/%E4%B9%98%E5%BD%B1arch_1.png" />
-<img alt="乘影GPGPU_arch2" src="../im_triton/%E4%B9%98%E5%BD%B1_arch2.png" />
+<img alt="乘影GPGPU_arch1" src="../im_triton/%E4%B9%98%E5%BD%B1arch_1.png" /></p>
+<p><img alt="乘影GPGPU_arch2" src="../im_triton/%E4%B9%98%E5%BD%B1_arch2.png" />
 GPGPU的特点是SIMT，单指令多线程，在高度并行化同时保证了一定灵活的可编程性。得以通过大量的高性能编译器与算子库开发不断更新，对基本上所有可以通过并行进行加速的算法做支持，取得不错的加速效果。</p>
 <h2 id="cudatriton-leetgpu">CUDA&amp;Triton编程学习网站 <a href="https://leetgpu.com/challenges">LeetGPU</a></h2>
 <h2 id="_1">前言</h2>
 <p>编写 CUDA kernel 的复杂性与 C++ 相当，还加入了许多 GPU 内存管理设置：内存合并、bank conflicts、线程块配置、共享内存管理……这些细节往往让人望而却步。Triton 的出现改变了这一切。它是 OpenAI 开发的一个开源 GPU 编程语言，让你可以用 Python 风格的语法编写高性能的 GPU kernel，而无需过多关心底层的硬件细节（实际上理解硬件架构仍然很重要）。</p>
-<p><div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cuda_runtime.h&gt;</span>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cuda_runtime.h&gt;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kr">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">vector_add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">blockDim</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="nb">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
@@ -3431,8 +3431,8 @@ GPGPU的特点是SIMT，单指令多线程，在高度并行化同时保证了�
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="n">cudaDeviceSynchronize</span><span class="p">();</span>
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
 </span></code></pre></div>
-<img alt="cuda_arch1" src="im_triton/cuda编程示意图1.png" />
-<img alt="cuda_arch2" src="../im_triton/cuda%E7%BC%96%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE2.png" />
+<p><img alt="cuda_arch1" src="../im_triton/cuda%E7%BC%96%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png" /></p>
+<p><img alt="cuda_arch2" src="../im_triton/cuda%E7%BC%96%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE2.png" />
 需要参展CUDA编程与GPU内存架构，手动实现所需线程、块...的管理，在进行优化时还要实现共享内存等更复杂的操作。</p>
 <p>与之相比，OpenAI 研发的 Triton 是一个专门为深度学习和高性能计算任务设计的编程语言和编译器，它旨在简化并优化在GPU上执行的复杂操作的开发。核心特点是积极拥抱pytorch生态（pytorch为了支持高性能AI计算，提供了torch.compile装饰类，像c语言一样将函数类just in time编译为更高效的静态图，并且可以autotune优化），为程序员在实现稀疏操作时提供了更多的灵活性，同时<strong>允许编译器为数据局部性和并行性进行积极的优化。</strong></p>
 <p><div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>import torch
@@ -5824,7 +5824,7 @@ e.g. Accelerating 3D Gaussian Splatting with Neural Sorting and Axis-Oriented Ra
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月5日 10:58:31 UTC">2025年11月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月5日 11:11:31 UTC">2025年11月5日</span>
   </span>
 
     
