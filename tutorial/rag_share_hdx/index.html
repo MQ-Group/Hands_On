@@ -1236,7 +1236,7 @@ GEMV 具有<strong>低算术强度</strong>,是典型的“内存带宽受限”
 <h3 id="2-top-level-processing-module">2.顶层处理模块 (Top-level Processing Module)</h3>
 <p>TPM 是 AccelHBM 的“大脑”和“本地计算单元”，其内部的功能块 (Functional Block - FB) 负责处理所有未卸载到内存的任务。<br></p>
 <p align="center">
-  <img src="./images_rag/image-8.png" alt="图片说明" width=200"/>
+  <img src="./images_rag/image-8.png" alt="图片说明" width="200"/>
 </p>
 
 <h3 id="3pim-enabled-hbm">3.PIM-enabled HBM <br></h3>
@@ -1357,22 +1357,22 @@ GEMV 具有<strong>低算术强度</strong>,是典型的“内存带宽受限”
 </tbody>
 </table>
 <p align="center">
-  <img src="./images_rag/image-9.png" alt="图片说明" width=400"/>
+  <img src="./images_rag/image-9.png" alt="图片说明" width="400"/>
 </p>
 
 <p><strong>•吞吐量</strong><br></p>
 <p align="center">
-  <img src="./images_rag/image-27(2).png" alt="图片说明" width=350"/>
+  <img src="./images_rag/image-27(2).png" alt="图片说明" width="350"/>
 </p>
 
 <p><strong>•延迟</strong><br></p>
 <p align="center">
-  <img src="./images_rag/image-10.png" alt="图片说明" width=400"/>
+  <img src="./images_rag/image-10.png" alt="图片说明" width="400"/>
 </p>
 <p><br></p>
 <p><strong>•能效</strong></p>
 <p align="center">
-  <img src="./images_rag/image-14.png" alt="图片说明" width=400"/>
+  <img src="./images_rag/image-14.png" alt="图片说明" width="400"/>
 </p>
 <p><br></p>
 <h1 id="rago-rag">RAGO  面向 RAG 服务的系统性性能优化</h1>
@@ -1433,16 +1433,16 @@ RAGO 为管道中的每个阶段启用可变的批处理大小 (batch sizes) ，
 <p>RAG 的瓶颈是动态变化的
 Case I (超大规模检索)： 瓶颈是检索 (Retrieval) 。当使用 8B LLM 时，检索占了 80% 以上的时间 。</p>
 <p align="center">
-  <img src="./images_rag/image-21.png" alt="图片说明" width=600"/>
+  <img src="./images_rag/image-21.png" alt="图片说明" width="600"/>
 </p>
 <p>Case II (长上下文处理)： 瓶颈不是检索（占比 &lt; 1%），而是数据库编码 (Database Encode) 。一个 120M 的编码器模型，由于要处理的 Token 太多，其开销甚至超过了 70B 的 LLM 。</p>
 <p align="center">
-  <img src="./images_rag/image-20.png" alt="图片说明" width=600"/>
+  <img src="./images_rag/image-20.png" alt="图片说明" width="600"/>
 </p>
 
 <p>Case III (迭代检索)： 瓶颈在于解码阶段的空闲 (idleness) 。解码器需要暂停，等待凑齐一个批次的迭代检索请求，导致 TPOT（每 Token 延迟）大幅增加 。</p>
 <p align="center">
-  <img src="./images_rag/image-19.png" alt="图片说明" width=350"/>
+  <img src="./images_rag/image-19.png" alt="图片说明" width="350"/>
 </p>
 
 <p><img alt="alt text" src="../images_rag/image-22.png" />
@@ -1580,7 +1580,7 @@ Case IV (查询重写器)： 瓶颈是查询重写器 (Query Rewriter) 导致的
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月5日 08:21:07 UTC">2025年11月5日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年11月5日 08:41:19 UTC">2025年11月5日</span>
   </span>
 
     
